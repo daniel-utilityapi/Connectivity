@@ -1,13 +1,9 @@
 name: Website Build
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
-  workflow_dispatch:
-    tags:
-      description: 'Test scenario tags'
-      required: false
-      type: boolean
 
 jobs:
   WebsiteBuild:

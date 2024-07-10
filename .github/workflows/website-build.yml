@@ -2,7 +2,7 @@ name: Website Build
 on:
   push:
     branches:
-      - main
+      - upstream-main
 jobs:
   WebsiteBuild:
     runs-on: ubuntu-latest

@@ -6,3 +6,4 @@ exclude:
 
 # base url for specification source links (added during website build)
 #github_specs_base_url: "https://github.com/carbon-data-specification/Connectivity/blob/main/specifications"
+github_specs_base_url: "https://github.com/daniel-utilityapi/Connectivity/blob/main/specifications"

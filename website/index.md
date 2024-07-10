@@ -1,7 +1,7 @@
 ---
 layout: base
 nav: home
-title: Connectivity Working Group
+title: Connectivity Working Group (WG1)
 meta_description: Linux Foundation Energy - Carbon Data Specification Consortium (CDSC) - Connectivity Working Group (WG1)
 ---
 <img src="{{ '/assets/cdsc-logo-color.svg' | relative_url }}" style="width:100%;max-width:30em;display:inline-block;margin-bottom:3em;">

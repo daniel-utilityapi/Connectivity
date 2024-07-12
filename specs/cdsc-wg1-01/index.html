@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Linux Foundation Energy - Carbon Data Specification Consortium (CDSC) - Connectivity Working Group (WG1) - Specifications - cdsc-wg1-01 - Server Metadata">
+        <link rel="icon" type="image/png" href="/Connectivity/assets/favicon.png">
+        <meta name="robots" content="noindex, nofollow"/>
+        <title>CDSC-WG1 - CDSC-WG1 - 01 Server Metadata - Specification</title>
+        <link href="/Connectivity/assets/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            /* Permalink styling */
+            .permalink {
+                text-decoration:none;
+                font-size: 60%;
+                display: inline-block;
+                vertical-align: top;
+                padding-top: 0.4em;
+            }
+            /* Code section styling */
+            pre.highlight {
+                background-color: #eee;
+                padding: 0.5em;
+            }
+            /* SVG icons (based on https://github.com/diafygi/svg-font-to-svg-sprite-converter)
+               Example (put "svgicons: fa-link, fa-plus-circle" in front matter):
+               <svg class="svgicon"><use href="#fa-link"/></svg>
+               <svg class="svgicon"><use href="#fa-plus-circle"/></svg>
+            */
+            #svgicon-defs{
+                display: none;
+            }
+            .svgicon {
+                overflow: visible !important;
+                height: 0.7em;
+                width: 0.7em;
+                fill:currentColor;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- SVG Icons (see comment in css above on how to use) -->
+        <svg id="svgicon-defs" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <symbol id="fa-external-link" viewBox="0 0 1792 1792" overflow="visible">
+    <path d="M1408 928v320q0 119 -84.5 203.5t-203.5 84.5h-832q-119 0 -203.5 -84.5t-84.5 -203.5v-832q0 -119 84.5 -203.5t203.5 -84.5h704q14 0 23 9t9 23v64q0 14 -9 23t-23 9h-704q-66 0 -113 47t-47 113v832q0 66 47 113t113 47h832q66 0 113 -47t47 -113v-320q0 -14 9 -23t23 -9h64q14 0 23 9t9 23zM1792 64v512q0 26 -19 45t-45 19t-45 -19l-176 -176l-652 652q-10 10 -23 10t-23 -10l-114 -114q-10 -10 -10 -23t10 -23l652 -652l-176 -176q-19 -19 -19 -45t19 -45t45 -19h512q26 0 45 19t19 45z"></path>
+</symbol>
+
+                
+                
+            </defs>
+        </svg>
+
+        <!-- Non-production Warning -->
+        <div id="non-prod-warning" class="bg-danger text-light text-center p-2 d-none">
+            <strong>
+                WARNING: THIS IS A DEVELOPMENT VERSION OF THE CDSC-WG1 WEBSITE
+                <span class="d-inline-block">
+                    (this message does not appear on
+                    <a class="text-light" href="https://connectivity.carbondataspec.org">connectivity.carbondataspec.org</a>)
+                </span>
+            </strong>
+        </div>
+        <script>
+            if (window.location.hostname.indexOf("connectivity.carbondataspec.org") === -1) {
+                document.getElementById("non-prod-warning").classList.remove("d-none");
+            }
+        </script>
+
+        <!-- Header -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a
+                    class="navbar-brand"
+                    href="/Connectivity/"
+                    >CDSC-WG1</a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#header"
+                    aria-controls="header"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="header">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                
+                                href="/Connectivity/"
+                                >Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                
+                                href="/Connectivity/use-cases"
+                                >Use Cases</a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link active text-decoration-underline"
+                                
+                                href="/Connectivity/specs"
+                                >Specifications</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/carbon-data-specification/Connectivity/tree/main/meetings" target="_blank"
+                                >Meeting Minutes
+                                <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Content -->
+        <div role="main" class="container pt-3 pb-5">
+            <div class="row">
+                <div class="col">
+                    <p><a href="/Connectivity/">Home</a> / <a href="/Connectivity/specs">Specifications</a> / <code class="language-plaintext highlighter-rouge">cdsc-wg1-01</code> - Server Metadata</p>
+
+<h1 id="server-metadata">Server Metadata</h1>
+
+<p>Looking for a more human-readable summary of this specification? Check out our <a href="/Connectivity/specs/cdsc-wg1-01/overview">overview</a>.</p>
+
+<p>Below is a rendering of the original specification source: <a href="https://github.com/daniel-utilityapi/Connectivity/blob/main/specifications/cdsc-wg1-01.md">https://github.com/daniel-utilityapi/Connectivity/blob/main/specifications/cdsc-wg1-01.md</a></p>
+
+<hr />
+
+<h1 id="cdsc-wg1-01---server-metadata">CDSC-WG1-01 - Server Metadata</h1>
+
+<h2 id="abstract-">Abstract <a id="abstract" href="#abstract" class="permalink">🔗</a></h2>
+
+<p>This specification defines how utilities and other entities may provide structured “metadata”, such as reference information about them, functionality they offer, and how organizations can interoperate with them. The defined base metadata endpoint is intended to act as a starting point for organizations to discover details and capabilities of energy utilities and other similar entities.</p>
+
+<h2 id="status-">Status <a id="status" href="#status" class="permalink">🔗</a></h2>
+
+<p><b style="color:red">WARNING: This specification is a DRAFT and has not achieved consensus by the working group.</b></p>
+
+<h2 id="copyright-">Copyright <a id="copyright" href="#copyright" class="permalink">🔗</a></h2>
+
+<p><span style="background-color:yellow">TODO</span></p>
+
+<h2 id="table-of-contents-">Table of Contents <a id="table-of-contents" href="#table-of-contents" class="permalink">🔗</a></h2>
+
+<ul>
+  <li><a href="#introduction">1. Introduction</a></li>
+  <li><a href="#terminology">2. Terminology</a></li>
+  <li><a href="#metadata-endpoint">3. Metadata Endpoint</a>
+    <ul>
+      <li><a href="#metadata-well-known-uri">3.1. Metadata Well-Known URI</a></li>
+      <li><a href="#metadata-object-format">3.2. Metadata Object Format</a></li>
+      <li><a href="#metadata-endpoint-organization">3.3. Metadata Endpoint Organization</a></li>
+      <li><a href="#infrastructure-types">3.4. Infrastructure Types</a></li>
+      <li><a href="#commodity-types">3.5. Commodity Types</a></li>
+      <li><a href="#server-capabilities">3.6. Server Capabilities</a></li>
+    </ul>
+  </li>
+  <li><a href="#coverage-endpoint">4. Coverage Endpoint</a>
+    <ul>
+      <li><a href="#coverage-object-format">4.1. Coverage Object Format</a></li>
+      <li><a href="#coverage-entry-format">4.2. Coverage Entry Format</a></li>
+      <li><a href="#coverage-entry-types">4.3. Coverage Entry Types</a></li>
+    </ul>
+  </li>
+  <li><a href="#server-migration">5. Server Migration</a></li>
+  <li><a href="#extensions">6. Extensions</a></li>
+  <li><a href="#examples">7. Examples</a></li>
+  <li><a href="#security">8. Security Considerations</a>
+    <ul>
+      <li><a href="#restricted-access">8.1. Restricted Access</a></li>
+      <li><a href="#rate-limiting">8.2. Rate Limiting</a></li>
+    </ul>
+  </li>
+  <li><a href="#references">9. References</a></li>
+  <li><a href="#acknowledgments">10. Acknowledgments</a></li>
+  <li><a href="#authors-addresses">11. Authors’ Addresses</a></li>
+</ul>
+
+<h2 id="1-introduction-">1. Introduction <a id="introduction" href="#introduction" class="permalink">🔗</a></h2>
+
+<p>This specification was developed as part of the global effort to combat the climate crisis. Specifically, in order to scalably measure carbon emissions of organizations and calculate the impact of deploying and operating clean energy technologies, companies need an efficient means to discover the details and capabilities of energy utilities and other similar entities.</p>
+
+<p>There are thousands of utilities serving customers across the world, and each have their own way of organizing and structuring data. This specification defines a way for these utilities and other entities to provide standardized, structured reference information about them, the functionality they offer, and how organizations can interoperate with them. By serving “metadata” defined in this specification, utilities and other entities can automatically incorporate their details and capabilities into carbon tracking websites, apps, products, and other clean energy technologies.</p>
+
+<p>This specification is intended to be a starting point for providing basic information about utilities and other similar entities, then extended by other specifications to define additional information and functionality. For example, this specification may be extended to define how organizations can dynamically register with a utility in order to gain access to customer-authorized energy usage data.</p>
+
+<h2 id="2-terminology-">2. Terminology <a id="terminology" href="#terminology" class="permalink">🔗</a></h2>
+
+<p><a id="server" href="#server" class="permalink">🔗</a> <strong>“Server”</strong> - The entity hosting the metadata endpoint. A Server can be an energy utility or another type of entity that want to provide structured information and capabilities about themselves. These entities can include, but are not limited to, distribution utilities, grid operators, electric retailers, community choice aggregators, government agencies, data warehouses, and private infrastructure providers.</p>
+
+<p><a id="client" href="#client" class="permalink">🔗</a> <strong>“Client”</strong> - The entity requesting Server’s metadata endpoints. A Client can be any organization or user seeking the Server’s metadata on their details and capabilities. These entities can include, but are not limited to, carbon tracking applications, electric vehicle companies, clean energy technology providers, commercial utility customers, grid management applications, and energy efficiency organizations.</p>
+
+<p><a id="referenced-technologies" href="#referenced-technologies" class="permalink">🔗</a> Referenced Technologies: “<a href="https://www.rfc-editor.org/rfc/rfc9110#name-https-uri-scheme">HTTPS</a>”, “<a href="https://www.rfc-editor.org/rfc/rfc3986.html#section-1.1.3">URL</a>”, “<a href="https://www.rfc-editor.org/rfc/rfc9110#name-methods">Request Methods</a>”, “<a href="https://www.rfc-editor.org/rfc/rfc9110#name-status-codes">Status Codes</a>”, “<a href="https://www.rfc-editor.org/rfc/rfc8259">JSON</a>”, “<a href="https://www.rfc-editor.org/rfc/rfc5785">Well-Known URI</a>”, “<a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO8601</a>”, “<a href="https://oauth.net/specs/">OAuth</a>”, “<a href="https://datatracker.ietf.org/doc/html/rfc7946">GeoJSON</a>”, <span style="background-color:yellow">TODO: add more as needed</span> are defined by their referenced standards documents.</p>
+
+<p><a id="key-words" href="#key-words" class="permalink">🔗</a> Key Words: “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “NOT RECOMMENDED”, “MAY”, and “OPTIONAL” are defined in accordance with <a href="https://www.rfc-editor.org/info/bcp14">BCP 14</a>.</p>
+
+<h2 id="3-metadata-endpoint-">3. Metadata Endpoint <a id="metadata-endpoint" href="#metadata-endpoint" class="permalink">🔗</a></h2>
+
+<p>Servers supporting this specification SHALL offer one or more HTTPS URLs from which a Client can perform a GET request to retrieve Server metadata, and the Server will respond with the Server’s metadata JSON object.</p>
+
+<p>For successful responses, Servers MUST respond with a “200 OK” Status Code and body containing a JSON object that is formatted as defined in <a href="#metadata-object-format">Metadata Object Format</a>. Cache-optimized responses, such as “304 Not Modified”, to Client requests with cached value headers, such as <code class="language-plaintext highlighter-rouge">If-None-Match</code>, is also acceptable.</p>
+
+<p>For invalid requests and error responses, Servers MUST respond with the appropriate Response Code for the type of issue or error (e.g. “503 Service Unavailable” if the Server is temporarily down for maintenance).</p>
+
+<h3 id="31-metadata-well-known-uri-">3.1. Metadata Well-Known URI <a id="metadata-well-known-uri" href="#metadata-well-known-uri" class="permalink">🔗</a></h3>
+
+<p>If the Server wishes to provide metadata publicly, the Server MUST support a metadata endpoint at the Well-Known URI <code class="language-plaintext highlighter-rouge">"/.well-known/carbon-data-spec.json"</code> on their hostname (e.g. https://example.com/.well-known/carbon-data-spec.json).</p>
+
+<p>Servers MAY additionally support other public and restricted URLs for special case or private metadata endpoints, as needed.</p>
+
+<h3 id="32-metadata-object-format-">3.2. Metadata Object Format <a id="metadata-object-format" href="#metadata-object-format" class="permalink">🔗</a></h3>
+
+<p>Metadata objects are formatted as JSON objects and contain named values, some of which are required and some of which are optional. The following values are included in the default list available in metadata objects.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">cds_metadata_version</code> - <em>string</em> - (REQUIRED) The version of metadata object format this Server follows, which for this version of the specification is <code class="language-plaintext highlighter-rouge">v1</code></li>
+  <li><code class="language-plaintext highlighter-rouge">cds_metadata_url</code> - <em>string</em> - (REQUIRED) A URL link to this metadata object’s canonical network location</li>
+  <li><code class="language-plaintext highlighter-rouge">created</code> - <em>ISO8601 datetime</em> - (REQUIRED) When the metadata url was first made available</li>
+  <li><code class="language-plaintext highlighter-rouge">updated</code> - <em>ISO8601 datetime</em> - (REQUIRED) When this metadata object was last modified</li>
+  <li><code class="language-plaintext highlighter-rouge">name</code> - <em>string</em> - (REQUIRED) The name of the utility or entity (e.g. “Demo Gas &amp; Electric”)</li>
+  <li><code class="language-plaintext highlighter-rouge">description</code> - <em>string</em> - (REQUIRED) A brief description about the utility or entity (e.g. “An electric and gas utility serving customers in Northern California”)</li>
+  <li><code class="language-plaintext highlighter-rouge">website</code> - <em>URL</em> - (REQUIRED) Where users can learn more about the utility or entity and its capabilities</li>
+  <li><code class="language-plaintext highlighter-rouge">documentation</code> - <em>URL</em> - (REQUIRED) Where Clients can find the utility or entity’s technical reference documentation</li>
+  <li><code class="language-plaintext highlighter-rouge">support</code> - <em>URL</em> - (REQUIRED) Where Clients can find contact information for technical support on the Server’s capabilities</li>
+  <li><code class="language-plaintext highlighter-rouge">infrastructure_types</code> - <em>Array[<a href="#infrastructure-types">InfrastructureType</a>]</em> - (REQUIRED) A list of infrastructure categories that are applicable to this utility or entity, which may be an empty array if the Server is not any of the possible infrastructure types</li>
+  <li><code class="language-plaintext highlighter-rouge">commodity_types</code> - <em>Array[<a href="#commodity-types">CommodityType</a>]</em> - (REQUIRED) A list of services or commodities that are applicable to this utility or entity, which may be an empty array if the Server does not have an applicable commodity</li>
+  <li><code class="language-plaintext highlighter-rouge">capabilities</code> - <em>Array[<a href="#server-capabilities">ServerCapability</a>]</em> - (REQUIRED) What capabilities and functionality this Server supports, which may be an empty array if the Server is not offering any additional capabilities beyond just this metadata object</li>
+  <li><code class="language-plaintext highlighter-rouge">coverage</code> - <em>URL</em> - (OPTIONAL) Where to find the <a href="#coverage-endpoint">Coverage Endpoint</a></li>
+  <li><code class="language-plaintext highlighter-rouge">related_metadata</code> - <em>Array[URL]</em> - (OPTIONAL) Where to find other related <a href="#metadata-endpoint">Metadata Endpoints</a></li>
+</ul>
+
+<p>Values and arrays of values in the metadata object is assumed to only related to the array of capabilities the Server is offering. For example, if a utility that offers both electricity and natural gas, but is only offering data access capabilities to electric service accounts, the Server only needs to include <code class="language-plaintext highlighter-rouge">electricity</code> in its <code class="language-plaintext highlighter-rouge">commodity_types</code> array and not <code class="language-plaintext highlighter-rouge">natural_gas</code>.</p>
+
+<h3 id="33-metadata-endpoint-organization-">3.3. Metadata Endpoint Organization <a id="metadata-endpoint-organization" href="#metadata-endpoint-organization" class="permalink">🔗</a></h3>
+
+<p>Many utilities and other similar entities are structured as multiple divisions, operating companies, territories, legal constructs, or other types of groupings. These organizational complexities and legal structures can make it difficult to publish a single representative metadata endpoint for an entire entity.</p>
+
+<p>When utilities and other similar entities wish to publicly provide multiple metadata objects that more cleanly define the metadata and capabilities for their entity, their Server MUST publish a single metadata endpoint at the <a href="metadata-well-known-uri">well-known URI</a> and within that metadata object include an array of <code class="language-plaintext highlighter-rouge">related_metadata</code> URLs that link the Client to the various subdivided or related metadata endpoints.</p>
+
+<p>It is acceptable for the initial well-known metadata endpoint object to include a minimal or empty array of <code class="language-plaintext highlighter-rouge">capabilities</code>, as it represents the entire entity, and leave enumerating the <code class="language-plaintext highlighter-rouge">capabilities</code> to the related metadata endpoints.</p>
+
+<h3 id="34-infrastructure-types-">3.4. Infrastructure Types <a id="infrastructure-types" href="#infrastructure-types" class="permalink">🔗</a></h3>
+
+<p>Infrastructure types are general categories of utility and energy grid entities that are likely to need to provide access to metadata and capabilities under this specification. The following list of strings are an enumerated set of infrastructure types that MAY be included in the <code class="language-plaintext highlighter-rouge">infrastructure_types</code> array of values in the metadata object.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">distribution_utility</code> - A electric, natural gas, and/or water utility that distributes the utility service to the end customer (e.g. “who maintains the wires to your house”)</li>
+  <li><code class="language-plaintext highlighter-rouge">metering_provider</code> - An entity that maintains the utility metering infrastructure and/or reads end customer meters (e.g. “who reads your meter”)</li>
+  <li><code class="language-plaintext highlighter-rouge">supplier</code> - An energy supplier for the end customer (e.g. “who you buy power from”)</li>
+  <li><code class="language-plaintext highlighter-rouge">central_repository</code> - A government mandated entity that collects customer usage information into a centralized repository for re-distribution (e.g. a state-level meter data warehouse for deregulated jurisdictions)</li>
+</ul>
+
+<h3 id="35-commodity-types-">3.5. Commodity Types <a id="commodity-types" href="#commodity-types" class="permalink">🔗</a></h3>
+
+<p>Commodity types are what general categories of services a utility or entity provides to end customers. The following list of strings are an enumerated set of commodity types that MAY be included in the <code class="language-plaintext highlighter-rouge">infrastructure_types</code> array of values in the metadata object.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">electricity</code> - Has metadata or capabilities around utility electric services</li>
+  <li><code class="language-plaintext highlighter-rouge">natural_gas</code> - Has metadata or capabilities around utility natural gas services</li>
+  <li><code class="language-plaintext highlighter-rouge">fuel_oil</code> - Has metadata or capabilities around utility fuel oil services</li>
+  <li><code class="language-plaintext highlighter-rouge">water</code> - Has metadata or capabilities around utility water services</li>
+</ul>
+
+<h3 id="36-server-capabilities-">3.6. Server Capabilities <a id="server-capabilities" href="#server-capabilities" class="permalink">🔗</a></h3>
+
+<p>Server capabilities are what specific interoperability or informational capabilities a Server is providing. The following list of strings are an enumerated set of capabilities that are defined by default in this specification.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">coverage</code> - The Server is providing coverage details related to itself as it relates the other listed capabilities. If included, a <code class="language-plaintext highlighter-rouge">coverage</code> value is REQUIRED in the metadata object.</li>
+</ul>
+
+<p>Other specifications that define interoperability or informational capabilities for utilities and other entities are encouraged to define an extension that adds their capability as a string to the above list. See the <a href="#Extensions">Extensions</a> section for details on how to extend this list of Server capabilities.</p>
+
+<h2 id="4-coverage-endpoint-">4. Coverage Endpoint <a id="coverage-endpoint" href="#coverage-endpoint" class="permalink">🔗</a></h2>
+
+<p>If Servers include the <code class="language-plaintext highlighter-rouge">coverage</code> <a href="#server-capabilities">Server capability</a>, a URL to the utility or entity’s coverage MUST be included in the metadata object.</p>
+
+<p>When the URL is requested and the request is valid, the Server MUST respond with a “200 OK” Status Code and body containing JSON object formatted according to the <a href="#coverage-object-format">Coverage Object Format</a>. Cache-optimized responses, such as “304 Not Modified”, to Client requests with cached value headers, such as <code class="language-plaintext highlighter-rouge">If-None-Match</code>, is also acceptable.</p>
+
+<p>For invalid requests and error responses, Servers MUST respond with the appropriate Response Code for the type of issue or error (e.g. “503 Service Unavailable” if the Server is temporarily down for maintenance).</p>
+
+<h3 id="41-coverage-object-format-">4.1. Coverage Object Format <a id="coverage-object-format" href="#coverage-object-format" class="permalink">🔗</a></h3>
+
+<p>Coverage objects are formatted as JSON objects and contain the following named values. This object serves mostly as an object wrapper around a list of <a href="#coverage-entry-format">coverage entries</a>, so that the list of coverage entries can be paginated by the Server if too long for one response.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">coverage_entries</code> - <em>Array[<a href="#coverage-entry-format">CoverageEntry</a>]</em> - (REQUIRED) A list of segments this Server covers</li>
+  <li><code class="language-plaintext highlighter-rouge">next</code> - <em><code class="language-plaintext highlighter-rouge">null</code> or URL</em> - (REQUIRED) Link to the next page of coverage entries (<code class="language-plaintext highlighter-rouge">null</code> if no more subsequent pages)</li>
+  <li><code class="language-plaintext highlighter-rouge">previous</code> - <em><code class="language-plaintext highlighter-rouge">null</code> or URL</em> - (REQUIRED) Link to the previous page of coverage entries (<code class="language-plaintext highlighter-rouge">null</code> if no more prior pages)</li>
+</ul>
+
+<h3 id="42-coverage-entry-format-">4.2. Coverage Entry Format <a id="coverage-entry-format" href="#coverage-entry-format" class="permalink">🔗</a></h3>
+
+<p>Coverage entries are formatted as JSON objects and contain named values, some of which are required and some of which are optional. The following values are included in the default list available in coverage entries.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">id</code> - <em>string</em> - (REQUIRED) A unique identifier for the coverage entry</li>
+  <li><code class="language-plaintext highlighter-rouge">type</code> - <em><a href="#coverage-entry-types">CoverageEntryType</a></em> - (REQUIRED) Which Coverage Entry Type this coverage entry is</li>
+  <li><code class="language-plaintext highlighter-rouge">updated</code> - <em>ISO8601 datetime</em> - (REQUIRED) When this coverage entry was last modified</li>
+  <li><code class="language-plaintext highlighter-rouge">name</code> - <em>string</em> - (REQUIRED) A human readable name for the coverage area or category (e.g. “Upstate New York”)</li>
+  <li><code class="language-plaintext highlighter-rouge">description</code> - <em>string</em> - (OPTIONAL) A brief description the coverage area or category (e.g. “Most of the northern half of New York state”)</li>
+  <li><code class="language-plaintext highlighter-rouge">map_resource</code> - <em>URL</em> - (OPTIONAL) Link to a map of the coverage territory</li>
+  <li><code class="language-plaintext highlighter-rouge">map_content_type</code> - <em>MIME type</em> - (OPTIONAL) Content-Type format of the <code class="language-plaintext highlighter-rouge">map_resource</code></li>
+  <li><code class="language-plaintext highlighter-rouge">geojson_resource</code> - <em>URL</em> - (OPTIONAL) Link to a GeoJSON object mapping the coverage territory</li>
+</ul>
+
+<p>When <code class="language-plaintext highlighter-rouge">type</code> is a geographic entry type, one or both of <code class="language-plaintext highlighter-rouge">map_resource</code> and <code class="language-plaintext highlighter-rouge">geojson_resource</code> MUST be provided. If <code class="language-plaintext highlighter-rouge">map_resource</code> is provided, then <code class="language-plaintext highlighter-rouge">map_content_type</code> MUST also be provided.</p>
+
+<h3 id="43-coverage-entry-types-">4.3. Coverage Entry Types <a id="coverage-entry-types" href="#coverage-entry-types" class="permalink">🔗</a></h3>
+
+<p>Coverage entry types describe what geographic territory is being detailed in the coverage entry. Many utilities have different geographic coverage for their different service types (e.g. their electric service territory is different from their natural gas service territory), so Servers may include multiple coverage entries for different types of service without having to publish multiple metadata endpoints.</p>
+
+<p>The following list of strings are an enumerated set of coverage entry types that are valid <code class="language-plaintext highlighter-rouge">type</code> values in the coverage entry object.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">electric_service_territory</code> - Geographic area where metadata or capabilities for utility electric services is supported</li>
+  <li><code class="language-plaintext highlighter-rouge">natural_gas_service_territory</code> - Geographic area where metadata or capabilities for utility natural gas services is supported</li>
+  <li><code class="language-plaintext highlighter-rouge">fuel_oil_service_territory</code> - Geographic area where metadata or capabilities for utility fuel oil services is supported</li>
+  <li><code class="language-plaintext highlighter-rouge">water_service_territory</code> - Geographic area where metadata or capabilities for utility water services is supported</li>
+</ul>
+
+<h2 id="5-server-migration--">5. Server Migration  <a id="server-migration" href="#server-migration" class="permalink">🔗</a></h2>
+
+<p>Utilities and other entities frequently change their organizational structures, such as buying another utility and merging the utility territory together. As utilities and other entities evolve, their Server metadata endpoints, including the domains from which they are served, may no longer be valid.</p>
+
+<p>This section describes how Servers MUST transition their <a href="#metadata-well-known-uri">well-known metadata endpoint</a> when migrating or merging into another Server.</p>
+
+<p>For organizational changes where the utility or other entity is not changing their domain, the Server MUST update their existing well-known metadata endpoint in place to match the new organizational structure.</p>
+
+<p>For organizational changes where the new entity structure will not match the existing domain, the Server MUST create a new well-known metadata endpoint on their new domain and update the metadata contents to match the new organization. The Server MUST also respond to requests to the previous well-known metadata endpoint with a “301 Moved Permanently” or “302 Found” Status Code with a <code class="language-plaintext highlighter-rouge">Location</code> header containing the URL of the new updated metadata endpoint so that Clients may be automatically redirected to the overriding. The Server MUST maintain the redirect response for as long as the Server retains control over the domain or up to 3 years, whichever is less.</p>
+
+<h2 id="6-extensions-">6. Extensions <a id="extensions" href="#extensions" class="permalink">🔗</a></h2>
+
+<p>Other specifications MAY extend this specification to allow for seamless expansion in Server metadata and capabilities.</p>
+
+<p><a href="#metadata-object-format">Metadata Object</a>, <a href="#coverage-object-format">Coverage Object</a>, and <a href="#coverage-entry-format">Coverage Entry</a> MAY be extended by other specifications to allow for additional values to be possible in their object formats. When extending the object format, other specifications MUST reference the relevant section in this specification and denote that they are extending the object to add a new named value. The additional named value MUST be specified with a general description, the value’s format, and whether the value is REQUIRED or OPTIONAL.</p>
+
+<p>The enumerated lists for valid <a href="#infrastructure-types">Infrastructure Types</a>, <a href="#commodity-types">Commodity Types</a>, <a href="#server-capabilities">Server Capabilities</a>, and <a href="#coverage-entry-types">Coverage Entry Types</a> MAY be extended by other specifications to allow for additional strings to be valid. When extending enumerated list, other specifications MUST reference the relevant section in this specification and denote that they are extending the list to add a new string. The additional string MUST be specified with a description of what that string means when it is included in the relevant array.</p>
+
+<p>To facilitate forwards compatibility, Clients MUST ignore unknown or undocumented object values and enumerated strings. If a Client cannot provide adequate functionality based on too many unknown or undocumented object values or enumerated strings, the Client SHOULD refer to the Server’s technical documentation (the <code class="language-plaintext highlighter-rouge">documentation</code> value in the metadata object) or contact the Server’s technical support (via the <code class="language-plaintext highlighter-rouge">support</code> value in the metadata object).</p>
+
+<h2 id="7-examples-">7. Examples <a id="examples" href="#examples" class="permalink">🔗</a></h2>
+
+<p>The following is a non-normative example of a Client request and Server response to a metadata endpoint.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>==Request==
+GET /.well-known/carbon-data-spec.json HTTP/1.1
+Host: example.com
+
+==Response==
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+
+{
+    "cds_metadata_version": "v1",
+    "cds_metadata_url": "https://example.com/.well-known/carbon-data-spec.json",
+
+    "created": "2022-01-01T00:00:00.000000Z",
+    "updated": "2022-06-01T00:00:00.000000Z",
+
+    "name": "Demo Gas &amp; Electric",
+    "description": "A fictional utility that can be used for testing and demonstration purposes.",
+    "website": "https://example.com/data-access",
+    "documentation": "https://example.com/data-access/docs",
+    "support": "https://example.com/developers/contact",
+    "infrastructure_types": [
+        "distribution_utility",
+        "metering_provider,
+        "supplier"
+    ],
+    "commodity_types": [
+        "electricity",
+        "natural_gas"
+    ],
+    "capabilities": [
+        "coverage",
+    ],
+
+    "coverage": "https://static.example.com/cds-coverage.json"
+}
+</code></pre></div></div>
+
+<p>The following is a non-normative example of a Client request and Server response to a coverage endpoint.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>==Request==
+GET /cds-coverage.json HTTP/1.1
+Host: static.example.com
+
+==Response==
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+
+{
+    "coverage_entries": [
+        {
+            "id": "norcal",
+            "type": "electric_service_territory",
+            "updated": "2022-06-01T00:00:00.000000Z",
+            "name": "DG&amp;E Electric Service Territory",
+            "description": "Covers most of northern California from Fresno to Redding",
+            "map_resource": "https://static.example.com/cds-coverage-map.png",
+            "map_content_type": "image/png",
+            "geojson_resource": "https://static.example.com/cds-coverage-map-geo.json"
+        }
+    ],
+    "next": null,
+    "previous": null
+}
+</code></pre></div></div>
+
+<h2 id="8-security-considerations-">8. Security Considerations <a id="security" href="#security" class="permalink">🔗</a></h2>
+
+<p>This specification involves a utility or other entity publishing details about itself. Server operators MUST review all material published in the metadata and coverage endpoints and make sure it is information that is allowed to be made available to Clients. This is especially true for <a href="#metadata-well-known-uri">well-known metadata endpoints</a>, as not only are these endpoints public, they are intentionally published with a URL structure that allows them to auto-discovered by Clients.</p>
+
+<h3 id="81-restricted-access-">8.1. Restricted Access <a id="restricted-access" href="#restricted-access" class="permalink">🔗</a></h3>
+
+<p>Servers that wish to restrict access to a metadata or coverage endpoint to certain Clients MUST configure well established authentication processes for Clients to ensure that only the approved Clients may access the restricted endpoint.</p>
+
+<p>This specification does not describe specifically how Servers will authenticate Clients, as these restricted access protocols are context dependent. For example, if a Server is providing the metadata endpoint as part of an existing logged in portal, then they can use that logged in portal’s session cookie to authenticate Client requests to the metadata endpoint.</p>
+
+<p><a href="#metadata-well-known-uri">Well-known metadata endpoints</a> MUST NOT require Client authentication to access, since these metadata endpoints are intended to be published publicly.</p>
+
+<h3 id="82-rate-limiting-">8.2. Rate Limiting <a id="rate-limiting" href="#rate-limiting" class="permalink">🔗</a></h3>
+
+<p>For <a href="#metadata-well-known-uri">well-known metadata endpoints</a> and other publicly accessible metadata and coverage endpoints, Serves SHOULD configure rate limiting restrictions so that bots and misconfigured scripts will not flood and overwhelm the endpoints with requests, while still allowing legitimate and low-volume requests have access to the endpoints.</p>
+
+<h2 id="9-references-">9. References <a id="references" href="#references" class="permalink">🔗</a></h2>
+
+<p><span style="background-color:yellow">TODO</span></p>
+
+<h2 id="10-acknowledgments-">10. Acknowledgments <a id="acknowledgments" href="#acknowledgments" class="permalink">🔗</a></h2>
+
+<p>The authors would like to thank the late Shuli Goodman, who was the Executive Director of LFEnergy, for her incredible leadership in initially organizing the Carbon Data Specification.</p>
+
+<h2 id="11-authors-addresses-">11. Authors’ Addresses <a id="authors-addresses" href="#authors-addresses" class="permalink">🔗</a></h2>
+
+<p>Daniel Roesler<br />
+UtilityAPI<br />
+Email: <a href="mailto:daniel@utilityapi.com">daniel@utilityapi.com</a><br />
+URI: <a href="https://utilityapi.com/">https://utilityapi.com/</a></p>
+
+<hr />
+
+<h1 id="other-drafts-">Other Drafts <a id="other-drafts" href="#other-drafts" class="permalink">🔗</a></h1>
+
+<ul>
+  <li>Maintainer’s draft: [<a href="https://daniel-utilityapi.github.io/Connectivity/specs/cdsc-wg1-01">Website</a>] [<a href="https://github.com/daniel-utilityapi/Connectivity/blob/main/specifications/cdsc-wg1-01.md">Code</a>]</li>
+</ul>
+
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-light pt-5 pb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h4>Connectivity Working Group:</h4>
+                        <ul>
+                            <li>
+                                <a href="/Connectivity/"
+                                    >Working Group website</a>
+                                (this website!)
+                            </li>
+                            <li>
+                                <a href="/Connectivity/use-cases"
+                                    >Use Cases</a>
+                            </li>
+                            <li>
+                                <a href="/Connectivity/specs"
+                                    >Specifications</a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/carbon-data-specification/Connectivity" target="_blank"
+                                    >Github Repository
+                                    <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/carbon-data-specification/Connectivity/tree/main/meetings" target="_blank"
+                                    >Meeting Minutes
+                                    <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/carbon-data-specification/Connectivity/pulls" target="_blank"
+                                    >Active Pull Requests
+                                    <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                            </li>
+                            <li>
+                                <a href="https://lists.lfenergy.org/g/cdsc-connectivity-wg" target="_blank"
+                                    >Mailing List
+                                    <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                            </li>
+                            <li>
+                                <a href="https://lists.lfenergy.org/g/cdsc-connectivity-wg/calendar" target="_blank"
+                                    >Event Calendar
+                                    <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                            </li>
+                            <li>
+                                <a href="https://slack.lfenergy.org/" target="_blank"
+                                    >Slack
+                                    <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                                (channel: <code>#cdsc-connectivity-wg</code>)
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <h4>CDSC / Linux Foundation:</h4>
+                        <ul>
+                            <li>
+                                <a href="https://www.linuxfoundation.org/" target="_blank"
+                                    >Linux Foundation
+                                    <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                                <ul>
+                                    <li>
+                                        <a href="https://www.lfenergy.org/" target="_blank"
+                                            >LF Energy
+                                            <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                                        <ul>
+                                            <li>
+                                                <a href="https://carbondataspec.org" target="_blank"
+                                                    >Carbon Data Specification Consortium (CDSC)
+                                                    <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                                                <ul>
+                                                    <li>
+                                                        <a href="https://github.com/carbon-data-specification/Connectivity" target="_blank"
+                                                            >Connectivity Working Group (WG1)
+                                                            <svg class="svgicon"><use href="#fa-external-link"/></svg></a> (i.e. this working group)
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://github.com/carbon-data-specification/Power-Systems-Data" target="_blank"
+                                                            >Power Systems Data Working Group (WG2)
+                                                            <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://github.com/carbon-data-specification/Customer-Data" target="_blank"
+                                                            >Customer Data Working Group (WG3)
+                                                            <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="/Connectivity/assets/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+        
+        
+    </body>
+</html>
+

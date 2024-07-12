@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Linux Foundation Energy - Carbon Data Specification Consortium (CDSC) - Connectivity Working Group (WG1) - Specifications - cdsc-wg1-01 - Server Metadata - Overview">
+        <link rel="icon" type="image/png" href="/Connectivity/assets/favicon.png">
+        <meta name="robots" content="noindex, nofollow"/>
+        <title>CDSC-WG1 - CDSC-WG1 - 01 Server Metadata - Overview</title>
+        <link href="/Connectivity/assets/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            /* Permalink styling */
+            .permalink {
+                text-decoration:none;
+                font-size: 60%;
+                display: inline-block;
+                vertical-align: top;
+                padding-top: 0.4em;
+            }
+            /* Code section styling */
+            pre.highlight {
+                background-color: #eee;
+                padding: 0.5em;
+            }
+            /* SVG icons (based on https://github.com/diafygi/svg-font-to-svg-sprite-converter)
+               Example (put "svgicons: fa-link, fa-plus-circle" in front matter):
+               <svg class="svgicon"><use href="#fa-link"/></svg>
+               <svg class="svgicon"><use href="#fa-plus-circle"/></svg>
+            */
+            #svgicon-defs{
+                display: none;
+            }
+            .svgicon {
+                overflow: visible !important;
+                height: 0.7em;
+                width: 0.7em;
+                fill:currentColor;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- SVG Icons (see comment in css above on how to use) -->
+        <svg id="svgicon-defs" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <symbol id="fa-external-link" viewBox="0 0 1792 1792" overflow="visible">
+    <path d="M1408 928v320q0 119 -84.5 203.5t-203.5 84.5h-832q-119 0 -203.5 -84.5t-84.5 -203.5v-832q0 -119 84.5 -203.5t203.5 -84.5h704q14 0 23 9t9 23v64q0 14 -9 23t-23 9h-704q-66 0 -113 47t-47 113v832q0 66 47 113t113 47h832q66 0 113 -47t47 -113v-320q0 -14 9 -23t23 -9h64q14 0 23 9t9 23zM1792 64v512q0 26 -19 45t-45 19t-45 -19l-176 -176l-652 652q-10 10 -23 10t-23 -10l-114 -114q-10 -10 -10 -23t10 -23l652 -652l-176 -176q-19 -19 -19 -45t19 -45t45 -19h512q26 0 45 19t19 45z"></path>
+</symbol>
+
+                
+                
+            </defs>
+        </svg>
+
+        <!-- Non-production Warning -->
+        <div id="non-prod-warning" class="bg-danger text-light text-center p-2 d-none">
+            <strong>
+                WARNING: THIS IS A DEVELOPMENT VERSION OF THE CDSC-WG1 WEBSITE
+                <span class="d-inline-block">
+                    (this message does not appear on
+                    <a class="text-light" href="https://connectivity.carbondataspec.org">connectivity.carbondataspec.org</a>)
+                </span>
+            </strong>
+        </div>
+        <script>
+            if (window.location.hostname.indexOf("connectivity.carbondataspec.org") === -1) {
+                document.getElementById("non-prod-warning").classList.remove("d-none");
+            }
+        </script>
+
+        <!-- Header -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a
+                    class="navbar-brand"
+                    href="/Connectivity/"
+                    >CDSC-WG1</a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#header"
+                    aria-controls="header"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="header">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                
+                                href="/Connectivity/"
+                                >Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                
+                                href="/Connectivity/use-cases"
+                                >Use Cases</a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link active text-decoration-underline"
+                                
+                                href="/Connectivity/specs"
+                                >Specifications</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/carbon-data-specification/Connectivity/tree/main/meetings" target="_blank"
+                                >Meeting Minutes
+                                <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Content -->
+        <div role="main" class="container pt-3 pb-5">
+            <div class="row">
+                <div class="col">
+                    <p><a href="/Connectivity/">Home</a> / <a href="/Connectivity/specs">Specifications</a> / <a href="/Connectivity/specs/cdsc-wg1-01"><code class="language-plaintext highlighter-rouge">cdsc-wg1-01</code> - Server Metadata</a> / Overview</p>
+
+<h1 id="server-metadata---overview">Server Metadata - Overview</h1>
+
+<p>This is a summary overview of <a href="/Connectivity/specs/cdsc-wg1-01"><code class="language-plaintext highlighter-rouge">cdsc-wg1-01</code></a>, which
+describes how utility and other central entity servers (“Servers”) provide a structured reference of
+information about them, the functionality they offer, and how other entities (“Clients”) can
+interoperate with them.</p>
+
+<p><strong>NOTE:</strong> Utility and other central entity servers (“Servers”) are not always run by utilities themselves. They
+could be other types of energy companies, such as electric retailers or community choice aggregators
+(CCAs). They can also be centralized entities such as state-run data warehouses or private
+infrastructure providers. Throughout this overview, the term “utility or entity” is used instead of
+just “utility” to describe the organizations providing access to utility data and functionality.</p>
+
+<h2 id="background-">Background <a id="background" href="#background" class="permalink">🔗</a></h2>
+
+<p>There are thousands of utilities serving customers across the world, and each has their own way of
+organizing and structuring data and functionality. For <a href="/Connectivity/use-cases">use case</a>
+companies needing to access data or functionality, an efficient means of discovering, registering, and
+interoperating with these utilities is needed.</p>
+
+<h2 id="metadata-endpoint-">Metadata Endpoint <a id="metadata-endpoint" href="#metadata-endpoint" class="permalink">🔗</a></h2>
+
+<p>Server metedata is provided under the <a href="https://datatracker.ietf.org/doc/html/rfc8615">well-known url</a>
+<code class="language-plaintext highlighter-rouge">"/.well-known/carbon-data-spec.json</code>. The response is a <a href="#metadata-structure">structured object</a>
+containing information about the server, what functionality it offers, and how to interoperate with
+it.</p>
+
+<h4 id="metadata-example-">Metadata Example <a id="metadata-example" href="#metadata-example" class="permalink">🔗</a></h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>==Request==
+GET /.well-known/carbon-data-spec.json HTTP/1.1
+Host: demoutility.com
+
+==Response==
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+
+{
+    "cds_metadata_version": "v1",
+    "cds_metadata_url": "https://demoutility.com/.well-known/carbon-data-spec.json",
+
+    "created": "2022-01-01T00:00:00.000000Z",
+    "updated": "2022-06-01T00:00:00.000000Z",
+
+    "name": "Demo Gas &amp; Electric",
+    "description": "A fictional utility that can be used for testing and demonstration purposes.",
+    "website": "https://demoutility.com/data-access",
+    "documentation": "https://demoutility.com/data-access/docs",
+    "support": "https://demoutility.com/contact-us?type=developers",
+    "infrastructure_types": [
+        "distribution_utility",
+        "metering_provider,
+        "supplier"
+    ],
+    "commodity_types": [
+        "electricity",
+        "natural_gas"
+    ],
+    "capabilities": [
+        "coverage",
+        "oauth",
+        "ieee1547"
+    ],
+    "related_metadata": ["https://static.demoutility.com/sister-company-cds.json"],
+
+    "coverage": "https://static.demoutility.com/cds-coverage.json",
+
+    "oauth_metadata": "https://demoutility.com/.well-known/oauth-authorization-server",
+
+    "ieee1547_setup": "https://demoutility.com/smart-inverters/setup"
+}
+</code></pre></div></div>
+
+<h4 id="metadata-structure-">Metadata Structure <a id="metadata-structure" href="#metadata-structure" class="permalink">🔗</a></h4>
+
+<p>Overall information about the Server is included at the object root level:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">cds_metadata_version</code> - <em>string</em> - (required) Which version of server metadata structure this server follows (currently <code class="language-plaintext highlighter-rouge">v1</code> is the only version)</li>
+  <li><code class="language-plaintext highlighter-rouge">cds_metadata_url</code> - <em>string</em> - (required) A URL link to this metadata object’s canonical network location</li>
+  <li><code class="language-plaintext highlighter-rouge">created</code> - <em>ISO8601 datetime</em> - (required) When the metadata url was first made available</li>
+  <li><code class="language-plaintext highlighter-rouge">updated</code> - <em>ISO8601 datetime</em> - (required) When this metadata object was last modified.</li>
+  <li><code class="language-plaintext highlighter-rouge">name</code> - <em>string</em> - (required) The name of the utility or entity (e.g. “Demo Gas &amp; Electric”)</li>
+  <li><code class="language-plaintext highlighter-rouge">description</code> - <em>string</em> - (required) A brief description about the utility or entity (e.g. “An electric and gas utility serving customers in Northern California”)</li>
+  <li><code class="language-plaintext highlighter-rouge">website</code> - <em>URL</em> - (required) Where users can learn more about the utility or entity and its data access capabilities</li>
+  <li><code class="language-plaintext highlighter-rouge">documentation</code> - <em>URL</em> - (required) Where users can find the utility or entity’s technical reference documentation</li>
+  <li><code class="language-plaintext highlighter-rouge">support</code> - <em>URL</em> - (required) Where Clients can find contact information for technical support on the Server’s capabilities</li>
+  <li><code class="language-plaintext highlighter-rouge">infrastructure_types</code> - <em>Array[<a href="#infrastructure-types">InfrastructureType</a>]</em> - (required) A list of Infrastructure Types that are applicable to this utility or entity</li>
+  <li><code class="language-plaintext highlighter-rouge">commodity_types</code> - <em>Array[<a href="#commodity-types">CommodityType</a>]</em> - (required) A list of Commodity Types that are applicable to this utility or entity</li>
+  <li><code class="language-plaintext highlighter-rouge">capabilities</code> - <em>Array[<a href="#capabilities">Capability</a>]</em> - (required) What Carbon Data Specification functionality the utility or entity supports</li>
+  <li><code class="language-plaintext highlighter-rouge">coverage</code> - <em>URL</em> - (optional) Where to find the structured <a href="#coverage-endpoint">Coverage</a> details for the utility or entity</li>
+  <li><code class="language-plaintext highlighter-rouge">related_metadata</code> - <em>Array[URL]</em> - (optional) Where to find other related <a href="#metadata-endpoint">Metadata Endpoints</a></li>
+</ul>
+
+<p>Other components are listed in the <code class="language-plaintext highlighter-rouge">capabilities</code>, where each listed component can optionally add additional metadata fields. Except for <code class="language-plaintext highlighter-rouge">coverage</code>, listed capabilities are defined in their own extensions and specifications.</p>
+
+<h4 id="infrastructure-types-">Infrastructure Types <a id="infrastructure-types" href="#infrastructure-types" class="permalink">🔗</a></h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">distribution_utility</code> - A electric, natural gas, and/or water utility that distributes the utility service to the end customer (e.g. “who maintains the wires to your house”)</li>
+  <li><code class="language-plaintext highlighter-rouge">metering_provider</code> - An entity that maintains the utility metering infrastructure and/or reads end customer meters (e.g. “who reads your meter”)</li>
+  <li><code class="language-plaintext highlighter-rouge">supplier</code> - An energy supplier for the end customer (e.g. “who you buy power from”)</li>
+  <li><code class="language-plaintext highlighter-rouge">central_repository</code> - A government mandated entity that collects customer usage information into a centralized repository for re-distribution (e.g. a state-level meter data warehouse for deregulated jurisdictions)</li>
+</ul>
+
+<h4 id="commodity-types-">Commodity Types <a id="commodity-types" href="#commodity-types" class="permalink">🔗</a></h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">electricity</code> - Has data and/or functionality around utility electric services</li>
+  <li><code class="language-plaintext highlighter-rouge">natural_gas</code> - Has data and/or functionality around utility natural gas services</li>
+  <li><code class="language-plaintext highlighter-rouge">fuel_oil</code> - Has data and/or functionality around utility fuel oil services</li>
+  <li><code class="language-plaintext highlighter-rouge">water</code> - Has data and/or functionality around utility water services</li>
+</ul>
+
+<h4 id="capabilities-">Capabilities <a id="capabilities" href="#capabilities" class="permalink">🔗</a></h4>
+
+<p>Below is the list of supported capabilities in this specification:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">coverage</code> - The Server is providing coverage details</li>
+</ul>
+
+<p>And here are some other extensions that add capabilities for Servers:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">oauth</code> - See <a href="/Connectivity/specs/cdsc-wg1-02"><code class="language-plaintext highlighter-rouge">cdsc-wg1-02</code></a> - How Clients can register with the Server in order to access data or functionality that requires</li>
+</ul>
+
+<p>Servers can extend their list of capabilities with other non-CDS functionalities. For example, if the utility or entity provides connectivity for smart inverters (e.g. IEEE 1547) and wants to list that as a capability in its metadata, it can include something like <code class="language-plaintext highlighter-rouge">ieee1547</code> as a capability, so that Clients who know how to interpret that capability can auto-discover it.</p>
+
+<p>Clients MUST ignore any capabilities they do not recognize.</p>
+
+<h2 id="coverage-endpoint-">Coverage Endpoint <a id="coverage-endpoint" href="#coverage-endpoint" class="permalink">🔗</a></h2>
+
+<p>This endpoint provides a structured metadata object on what territory, services, and customer
+segments for which the utility or entity provides support (i.e. “what it covers”).</p>
+
+<p>The returned resource follows the <a href="#coverage-structure">Coverage Structure</a>.</p>
+
+<h4 id="coverage-example-">Coverage Example <a id="coverage-example" href="#coverage-example" class="permalink">🔗</a></h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>==Request==
+GET /cds-coverage.json HTTP/1.1
+Host: static.demoutility.com
+
+==Response==
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+
+{
+    "coverage_entries": [
+        {
+            "id": "norcal",
+            "type": "electric_service_territory",
+            "updated": "2022-06-01T00:00:00.000000Z",
+            "name": "DG&amp;E Electric Service Territory",
+            "description": "Covers most of northern California from Fresno to Redding",
+            "map_resource": "https://static.demoutility.com/cds-coverage-map.png",
+            "map_content_type": "image/png",
+            "geojson_resource": "https://static.demoutility.com/cds-coverage-map-geo.json"
+        }
+    ],
+    "next": null,
+    "previous": null
+}
+</code></pre></div></div>
+
+<h4 id="coverage-structure-">Coverage Structure <a id="coverage-structure" href="#coverage-structure" class="permalink">🔗</a></h4>
+
+<p>The coverage object has the following fields at the root level:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">coverage_entries</code> - <em>Array[<a href="#coverage-entry">CoverageEntry</a>]</em> - (required) A list of segments this utility or enitity covers</li>
+  <li><code class="language-plaintext highlighter-rouge">next</code> - <em><code class="language-plaintext highlighter-rouge">null</code> or URL</em> - (required) Link to the next page of coverage entries (<code class="language-plaintext highlighter-rouge">null</code> if no more subsequent pages)</li>
+  <li><code class="language-plaintext highlighter-rouge">previous</code> - <em><code class="language-plaintext highlighter-rouge">null</code> or URL</em> - (required) Link to the previous page of coverage entries (<code class="language-plaintext highlighter-rouge">null</code> if no more prior pages)</li>
+</ul>
+
+<h4 id="coverage-entry-">Coverage Entry <a id="coverage-entry" href="#coverage-entry" class="permalink">🔗</a></h4>
+
+<p>The coverage area object has the following fields at the root level:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">id</code> - <em>string</em> - (required) A unique identifier for the coverage entry</li>
+  <li><code class="language-plaintext highlighter-rouge">type</code> - <em><a href="#coverage-entry-types">CoverageEntryType</a></em> - (required) Which Coverage Entry Type this coverage entry is</li>
+  <li><code class="language-plaintext highlighter-rouge">updated</code> - <em>ISO8601 datetime</em> - (required) When this coverage entry was last modified.</li>
+  <li><code class="language-plaintext highlighter-rouge">name</code> - <em>string</em> - (required) A human readable name for the coverage area or category (e.g. “Upstate New York”)</li>
+  <li><code class="language-plaintext highlighter-rouge">description</code> - <em>string</em> - (optional) A brief description the coverage area or category (e.g. “Most of the northern half of New York state”)</li>
+  <li><code class="language-plaintext highlighter-rouge">map_resource</code> - <em>URL</em> - (optional) Link to a map of the coverage territory</li>
+  <li><code class="language-plaintext highlighter-rouge">map_content_type</code> - <em>MIME type</em> - (optional) Content-Type format of the <code class="language-plaintext highlighter-rouge">map_resource</code></li>
+  <li><code class="language-plaintext highlighter-rouge">geojson_resource</code> - <em>URL</em> - (optional) Link to a <a href="https://datatracker.ietf.org/doc/html/rfc7946">GeoJSON</a> object mapping the coverage territory</li>
+</ul>
+
+<h4 id="coverage-entry-types-">Coverage Entry Types <a id="coverage-entry-types" href="#coverage-entry-types" class="permalink">🔗</a></h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">electric_service_territory</code> - Geographic area where data and/or functionality for utility electric services is supported</li>
+  <li><code class="language-plaintext highlighter-rouge">natural_gas_service_territory</code> - Geographic area where data and/or functionality for utility natural gas services is supported</li>
+  <li><code class="language-plaintext highlighter-rouge">fuel_oil_service_territory</code> - Geographic area where data and/or functionality for utility fuel oil services is supported</li>
+  <li><code class="language-plaintext highlighter-rouge">water_service_territory</code> - Geographic area where data and/or functionality for utility water services is supported</li>
+</ul>
+
+<hr />
+
+<h1 id="other-drafts-">Other Drafts <a id="other-drafts" href="#other-drafts" class="permalink">🔗</a></h1>
+
+<ul>
+  <li>Maintainer’s draft: [<a href="https://daniel-utilityapi.github.io/Connectivity/specs/cdsc-wg1-01/overview">Website</a>] [<a href="https://github.com/daniel-utilityapi/Connectivity/blob/main/website/specs/cdsc-wg1-01/overview.md">Code</a>]</li>
+</ul>
+
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-light pt-5 pb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h4>Connectivity Working Group:</h4>
+                        <ul>
+                            <li>
+                                <a href="/Connectivity/"
+                                    >Working Group website</a>
+                                (this website!)
+                            </li>
+                            <li>
+                                <a href="/Connectivity/use-cases"
+                                    >Use Cases</a>
+                            </li>
+                            <li>
+                                <a href="/Connectivity/specs"
+                                    >Specifications</a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/carbon-data-specification/Connectivity" target="_blank"
+                                    >Github Repository
+                                    <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/carbon-data-specification/Connectivity/tree/main/meetings" target="_blank"
+                                    >Meeting Minutes
+                                    <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/carbon-data-specification/Connectivity/pulls" target="_blank"
+                                    >Active Pull Requests
+                                    <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                            </li>
+                            <li>
+                                <a href="https://lists.lfenergy.org/g/cdsc-connectivity-wg" target="_blank"
+                                    >Mailing List
+                                    <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                            </li>
+                            <li>
+                                <a href="https://lists.lfenergy.org/g/cdsc-connectivity-wg/calendar" target="_blank"
+                                    >Event Calendar
+                                    <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                            </li>
+                            <li>
+                                <a href="https://slack.lfenergy.org/" target="_blank"
+                                    >Slack
+                                    <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                                (channel: <code>#cdsc-connectivity-wg</code>)
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <h4>CDSC / Linux Foundation:</h4>
+                        <ul>
+                            <li>
+                                <a href="https://www.linuxfoundation.org/" target="_blank"
+                                    >Linux Foundation
+                                    <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                                <ul>
+                                    <li>
+                                        <a href="https://www.lfenergy.org/" target="_blank"
+                                            >LF Energy
+                                            <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                                        <ul>
+                                            <li>
+                                                <a href="https://carbondataspec.org" target="_blank"
+                                                    >Carbon Data Specification Consortium (CDSC)
+                                                    <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                                                <ul>
+                                                    <li>
+                                                        <a href="https://github.com/carbon-data-specification/Connectivity" target="_blank"
+                                                            >Connectivity Working Group (WG1)
+                                                            <svg class="svgicon"><use href="#fa-external-link"/></svg></a> (i.e. this working group)
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://github.com/carbon-data-specification/Power-Systems-Data" target="_blank"
+                                                            >Power Systems Data Working Group (WG2)
+                                                            <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://github.com/carbon-data-specification/Customer-Data" target="_blank"
+                                                            >Customer Data Working Group (WG3)
+                                                            <svg class="svgicon"><use href="#fa-external-link"/></svg></a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="/Connectivity/assets/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+        
+        
+    </body>
+</html>
+

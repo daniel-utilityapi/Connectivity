@@ -414,7 +414,7 @@ Registration Fields can be either something that MUST or MAY be submitted as par
 <p>The following list of strings are an enumerated set of registration field types that are valid <code class="language-plaintext highlighter-rouge">type</code> values in the registration field object.</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">registration_field</code> - This field should be submitting with the <a href="#registration-request">Client Registration Request</a> as the <code class="language-plaintext highlighter-rouge">field_name</code>.
+  <li><code class="language-plaintext highlighter-rouge">registration_field</code> - This field should be submitted with the <a href="#registration-request">Client Registration Request</a> as the <code class="language-plaintext highlighter-rouge">field_name</code>.
 This type of registration field MUST also have <code class="language-plaintext highlighter-rouge">field_name</code> and <code class="language-plaintext highlighter-rouge">format</code> values.
 If this field is optional as part of registration, <code class="language-plaintext highlighter-rouge">default</code> must also be defined in the registration field object.</li>
   <li><code class="language-plaintext highlighter-rouge">manual_review</code> - This field indicates that the Server will manually review the registration before approving it for production use.
@@ -509,7 +509,7 @@ The Server then responds with either an error or a generated Client registration
   <li>The <code class="language-plaintext highlighter-rouge">token_endpoint_auth_method</code> MUST always be set to <code class="language-plaintext highlighter-rouge">client_secret_basic</code>.</li>
 </ul>
 
-<p>Additionally, the following additional named values MUST be included in the response.</p>
+<p>Additionally, the following named values MUST be included in the response.</p>
 
 <ul>
   <li><code class="language-plaintext highlighter-rouge">cds_server_metadata</code> - <em><a href="#url">URL</a></em> - (REQUIRED) Where the Client can find their registration-specific version of the <a href="/specs/cdsc-wg1-01/">CDSC-WG1-01 Server Metadata</a>.
@@ -529,12 +529,12 @@ Servers MUST also create <a href="#scope-creds-list">listed Scope Credentials</a
 <p>Severs MUST assign the submitted <code class="language-plaintext highlighter-rouge">redirect_uris</code> to all <a href="#scope-creds-format">Scope Credentials</a> in the <a href="#scope-creds-api">Scope Credentials API</a> that have <code class="language-plaintext highlighter-rouge">response_types</code>.
 Clients MAY subsequently manage which <code class="language-plaintext highlighter-rouge">redirect_uris</code> values are assigned to specific Scope Credentials using the <a href="#scope-creds-api">Scope Credentials API</a>.</p>
 
-<p>While Servers MAY support OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc7592">Dynamic Client Registration Management Protocol</a> by including the <code class="language-plaintext highlighter-rouge">registration_client_uri</code> and <code class="language-plaintext highlighter-rouge">registration_access_token</code> values in their registration response, this specification requires that Servers MUST support the <a href="clients-api">Clients API</a> by including the <code class="language-plaintext highlighter-rouge">cds_clients_api</code> value in the registration response as a way for Clients to manage their registrations.</p>
+<p>While Servers MAY support OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc7592">Dynamic Client Registration Management Protocol</a> by including the <code class="language-plaintext highlighter-rouge">registration_client_uri</code> and <code class="language-plaintext highlighter-rouge">registration_access_token</code> values in their registration response, this specification requires that Servers MUST support the <a href="clients-api">Clients API</a> by including the <code class="language-plaintext highlighter-rouge">cds_clients_api</code> value in the registration response as a way for Clients to manage their registrations. The Clients API is needed beyond the OAuth Dynamic Client Registration Management Protocol because as part of registration, Servers MAY create multiple Clients that group the various registered scopes, and OAuth’s Dynamic Client Registration Management Protocol does not support APIs for listing multiple clients or credentials that are created from a single registration request.</p>
 
 <h2 id="5-clients-api-">5. Clients API <a id="clients-api" href="#clients-api" class="permalink">🔗</a></h2>
 
 <p>This specification requires Servers provide a set of Application Programming Interfaces (APIs) allowing Clients to view and edit their Client registrations.
-These APIs are authenticated using a Bearer <code class="language-plaintext highlighter-rouge">access_token</code> granted to Clients using OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc6749#section-4.4"><code class="language-plaintext highlighter-rouge">client_credentials</code> grant</a> and the <code class="language-plaintext highlighter-rouge">client_secret</code> provided in the initial <a href="#registration-response">Client Registration Response</a> or <code class="language-plaintext highlighter-rouge">client_secret</code> values from the <a href="#scope-creds-api">Scope Credentials API</a> that include the <code class="language-plaintext highlighter-rouge">client_admin</code> scope.</p>
+These APIs are authenticated using a Bearer <code class="language-plaintext highlighter-rouge">access_token</code> obtained by the Client using OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc6749#section-4.4"><code class="language-plaintext highlighter-rouge">client_credentials</code> grant</a> process, where the <code class="language-plaintext highlighter-rouge">client_id</code> used is for a Client that includes the <code class="language-plaintext highlighter-rouge">client_admin</code> scope.</p>
 
 <h3 id="51-client-object-format-">5.1. Client Object Format <a id="client-format" href="#client-format" class="permalink">🔗</a></h3>
 
@@ -548,8 +548,7 @@ Client objects are required to follow the same object format as the <a href="#re
 Servers MUST make this URL unique for each Client registration.</li>
 </ul>
 
-<p>Additionally, while the <a href="#registration-response">Client Registration Response</a> MUST contain the <code class="language-plaintext highlighter-rouge">client_secret</code> field.
-Client objects returned from the Clients API MUST NOT include the <code class="language-plaintext highlighter-rouge">client_secret</code> or <code class="language-plaintext highlighter-rouge">client_secret_expires_at</code> fields.
+<p>Additionally, while the <a href="#registration-response">Client Registration Response</a> MUST contain the <code class="language-plaintext highlighter-rouge">client_secret</code> field, Client objects returned from the Clients API MUST NOT include the <code class="language-plaintext highlighter-rouge">client_secret</code> or <code class="language-plaintext highlighter-rouge">client_secret_expires_at</code> fields.
 Clients MUST instead use the <a href="#scope-creds-api">Scope Credentials API</a> to obtain <code class="language-plaintext highlighter-rouge">client_secret</code> values for use in other APIs.</p>
 
 <h3 id="52-listing-clients-">5.2. Listing Clients <a id="clients-list" href="#clients-list" class="permalink">🔗</a></h3>
@@ -617,7 +616,7 @@ If all submitted fields have been synchronously updated as part of the response,
 <p>This specification requires Servers provide an API allowing Clients to view and manage their Client settings.
 While the settings fields are directly related to a specific registered Client, they are not included in the Client object itself in order to allow Clients to make partial updates to their settings values using an HTTPS <code class="language-plaintext highlighter-rouge">PATCH</code> request instead of a PUT request, which is required for the Client object updates to remain compatible with OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc7592">Dynamic Client Registration Management Protocol</a>.</p>
 
-<p>The Client Settings API are authenticated using a Bearer <code class="language-plaintext highlighter-rouge">access_token</code> granted to Clients using OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc6749#section-4.4"><code class="language-plaintext highlighter-rouge">client_credentials</code> grant</a> and the <code class="language-plaintext highlighter-rouge">client_secret</code> provided in the initial <a href="#registration-response">Client Registration Response</a> or <code class="language-plaintext highlighter-rouge">client_secret</code> values from the <a href="#scope-creds-api">Scope Credentials API</a> that include the <code class="language-plaintext highlighter-rouge">client_admin</code> scope.</p>
+<p>The Client Settings API are authenticated using a Bearer <code class="language-plaintext highlighter-rouge">access_token</code> obtained by the Client using OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc6749#section-4.4"><code class="language-plaintext highlighter-rouge">client_credentials</code> grant</a> process, where the <code class="language-plaintext highlighter-rouge">client_id</code> used is for a Client that includes the <code class="language-plaintext highlighter-rouge">client_admin</code> scope.</p>
 
 <p>Clients request their current <a href="#client-settings-format">Client Settings object</a> my making an authenticated HTTPS <code class="language-plaintext highlighter-rouge">GET</code> request to the <code class="language-plaintext highlighter-rouge">cds_client_settings_api</code> endpoint provided in the <a href="#client-format">Client object</a>.</p>
 
@@ -708,7 +707,7 @@ If all submitted fields have been synchronously updated as part of the response,
 <p>To facilitate automated integration between Servers and Clients, this specification requires that official communication between Servers and Clients be performed using the Client Updates APIs.
 Servers MAY implement other means of communications for exchanging messages and notifications, such as email support, but they MUST also mirror any official communications that impact Client or Grant statuses, settings, or access using the Client Updates API.</p>
 
-<p>The Client Updates API endpoints are authenticated using a Bearer <code class="language-plaintext highlighter-rouge">access_token</code> granted to Clients using OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc6749#section-4.4"><code class="language-plaintext highlighter-rouge">client_credentials</code> grant</a> and the <code class="language-plaintext highlighter-rouge">client_secret</code> provided in the initial <a href="#registration-response">Client Registration Response</a> or <code class="language-plaintext highlighter-rouge">client_secret</code> values from the <a href="#scope-creds-api">Scope Credentials API</a> that include the <code class="language-plaintext highlighter-rouge">client_admin</code> scope.</p>
+<p>The Client Updates API endpoints are authenticated using a Bearer <code class="language-plaintext highlighter-rouge">access_token</code> obtained by the Client using OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc6749#section-4.4"><code class="language-plaintext highlighter-rouge">client_credentials</code> grant</a> process, where the <code class="language-plaintext highlighter-rouge">client_id</code> used is for a Client that includes the <code class="language-plaintext highlighter-rouge">client_admin</code> scope.</p>
 
 <h3 id="71-client-update-object-format-">7.1. Client Update Object Format <a id="client-update-format" href="#client-update-format" class="permalink">🔗</a></h3>
 
@@ -872,7 +871,7 @@ Severs MUST consider newer Client Updates created by the Client as amending the 
 <p>To allow Clients to manage <code class="language-plaintext highlighter-rouge">client_secret</code> values used for authentication to APIs, this specification requires that Server implement a Scope Credentials API.
 Servers MAY implement other means of managing Scope Credentials, such as a web interface, but they MUST also mirror any Scope Credentials managed by other means on this required Scope Credentials API.</p>
 
-<p>The Scope Credentials API endpoints are authenticated using a Bearer <code class="language-plaintext highlighter-rouge">access_token</code> granted to Clients using OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc6749#section-4.4"><code class="language-plaintext highlighter-rouge">client_credentials</code> grant</a> and the <code class="language-plaintext highlighter-rouge">client_secret</code> provided in the initial <a href="#registration-response">Client Registration Response</a> or <code class="language-plaintext highlighter-rouge">client_secret</code> values from the <a href="#scope-creds-api">Scope Credentials API</a> that include the <code class="language-plaintext highlighter-rouge">client_admin</code> scope.</p>
+<p>The Scope Credentials API endpoints are authenticated using a Bearer <code class="language-plaintext highlighter-rouge">access_token</code> obtained by the Client using OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc6749#section-4.4"><code class="language-plaintext highlighter-rouge">client_credentials</code> grant</a> process, where the <code class="language-plaintext highlighter-rouge">client_id</code> used is for a Client that includes the <code class="language-plaintext highlighter-rouge">client_admin</code> scope.</p>
 
 <h3 id="81-scope-credentials-object-format-">8.1. Scope Credentials Object Format <a id="scope-creds-format" href="#scope-creds-format" class="permalink">🔗</a></h3>
 
@@ -1036,7 +1035,7 @@ If all submitted fields have been synchronously updated as part of the response,
 <h2 id="9-grants-api-">9. Grants API <a id="grants-api" href="#grants-api" class="permalink">🔗</a></h2>
 
 <p>This specification requires Servers provide an API allowing Clients to view and edit OAuth user authorizations and client credentials grants (“Grants”) related to their registration.
-These APIs are authenticated using a Bearer <code class="language-plaintext highlighter-rouge">access_token</code> granted to Clients using OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc6749#section-4.4"><code class="language-plaintext highlighter-rouge">client_credentials</code> grant</a> and the <code class="language-plaintext highlighter-rouge">client_secret</code> provided in the initial <a href="#registration-response">Client Registration Response</a> or <code class="language-plaintext highlighter-rouge">client_secret</code> values from the <a href="#scope-creds-api">Scope Credentials API</a> that include the <code class="language-plaintext highlighter-rouge">client_admin</code> scope.</p>
+These APIs are authenticated using a Bearer <code class="language-plaintext highlighter-rouge">access_token</code> obtained by the Client using OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc6749#section-4.4"><code class="language-plaintext highlighter-rouge">client_credentials</code> grant</a> process, where the <code class="language-plaintext highlighter-rouge">client_id</code> used is for a Client that includes the <code class="language-plaintext highlighter-rouge">client_admin</code> scope.</p>
 
 <h3 id="91-grant-object-format-">9.1. Grant Object Format <a id="grant-format" href="#grant-format" class="permalink">🔗</a></h3>
 
@@ -1171,7 +1170,7 @@ Additionally, if the <code class="language-plaintext highlighter-rouge">scope</c
 
 <p>Servers MUST provide both an authenticated API-based directory <a href="#directory-list">list of Clients</a>, as well as <a href="#public-directory">publicly accessible web directory</a> interface of Clients who have been configured to be listed.</p>
 
-<p>The Directory APIs are authenticated using a Bearer <code class="language-plaintext highlighter-rouge">access_token</code> granted to Clients using OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc6749#section-4.4"><code class="language-plaintext highlighter-rouge">client_credentials</code> grant</a> and the <code class="language-plaintext highlighter-rouge">client_secret</code> provided in the initial <a href="#registration-response">Client Registration Response</a> or <code class="language-plaintext highlighter-rouge">client_secret</code> values from the <a href="#scope-creds-api">Scope Credentials API</a> that include the <code class="language-plaintext highlighter-rouge">client_admin</code> scope.
+<p>The Directory APIs are authenticated using a Bearer <code class="language-plaintext highlighter-rouge">access_token</code> obtained by the Client using OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc6749#section-4.4"><code class="language-plaintext highlighter-rouge">client_credentials</code> grant</a> process, where the <code class="language-plaintext highlighter-rouge">client_id</code> used is for a Client that includes the <code class="language-plaintext highlighter-rouge">client_admin</code> scope.
 However, the <a href="#public-directory">Publicly Accessible Web Directory</a> not authenticated, as it is intended to be publicly accessible to browser users.</p>
 
 <h3 id="101-directory-entry-object-format-">10.1. Directory Entry Object Format <a id="directory-entry-format" href="#directory-entry-format" class="permalink">🔗</a></h3>

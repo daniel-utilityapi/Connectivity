@@ -177,63 +177,48 @@
       <li><a href="#clients-modify">5.4. Modifying Clients</a></li>
     </ul>
   </li>
-  <li><a href="#client-settings-api">6. Client Settings API</a>
+  <li><a href="#client-messages-api">6. Client Messages API</a>
     <ul>
-      <li><a href="#client-settings-format">6.1. Client Settings Object Format</a></li>
-      <li><a href="#profile-visibility">6.2. Profile Visibility</a></li>
-      <li><a href="#button-styles">6.3. Button Styles</a></li>
-      <li><a href="#clients-settings-modify">6.4. Modifying Client Settings</a></li>
+      <li><a href="#client-message-format">6.1. Client Message Object Format</a></li>
+      <li><a href="#client-message-types">6.2. Client Message Types</a></li>
+      <li><a href="#client-message-statuses">6.3. Client Message Statuses</a></li>
+      <li><a href="#client-update-request-format">6.4. Client Update Request Object Format</a></li>
+      <li><a href="#clients-messages-list">6.5. Listing Client Messages</a></li>
+      <li><a href="#clients-messages-create">6.6. Creating Client Messages</a></li>
+      <li><a href="#clients-messages-modify">6.7. Modifying Client Messages</a></li>
     </ul>
   </li>
-  <li><a href="#client-messages-api">7. Client Messages API</a>
+  <li><a href="#scope-creds-api">7. Scope Credentials API</a>
     <ul>
-      <li><a href="#client-message-format">7.1. Client Message Object Format</a></li>
-      <li><a href="#client-message-types">7.2. Client Message Types</a></li>
-      <li><a href="#client-message-statuses">7.3. Client Message Statuses</a></li>
-      <li><a href="#client-update-request-format">7.4. Client Update Request Object Format</a></li>
-      <li><a href="#clients-messages-list">7.5. Listing Client Messages</a></li>
-      <li><a href="#clients-messages-create">7.6. Creating Client Messages</a></li>
-      <li><a href="#clients-messages-modify">7.7. Modifying Client Messages</a></li>
+      <li><a href="#scope-creds-format">7.1. Scope Credentials Object Format</a></li>
+      <li><a href="#scope-creds-statuses">7.2. Scope Credentials Statuses</a></li>
+      <li><a href="#auth-request-scope-evaluation">7.3. Evaluating Authorization Requests</a></li>
+      <li><a href="#scope-creds-list">7.4. Listing Scope Credentials</a></li>
+      <li><a href="#scope-creds-get">7.5. Retrieving Individual Scope Credentials</a></li>
+      <li><a href="#scope-creds-create">7.6. Creating Scope Credentials</a></li>
+      <li><a href="#scope-creds-modify">7.7. Modifying Scope Credentials</a></li>
     </ul>
   </li>
-  <li><a href="#scope-creds-api">8. Scope Credentials API</a>
+  <li><a href="#grants-api">8. Grants API</a>
     <ul>
-      <li><a href="#scope-creds-format">8.1. Scope Credentials Object Format</a></li>
-      <li><a href="#scope-creds-statuses">8.2. Scope Credentials Statuses</a></li>
-      <li><a href="#auth-request-scope-evaluation">8.3. Evaluating Authorization Requests</a></li>
-      <li><a href="#scope-creds-list">8.4. Listing Scope Credentials</a></li>
-      <li><a href="#scope-creds-get">8.5. Retrieving Individual Scope Credentials</a></li>
-      <li><a href="#scope-creds-create">8.6. Creating Scope Credentials</a></li>
-      <li><a href="#scope-creds-modify">8.7. Modifying Scope Credentials</a></li>
+      <li><a href="#grant-format">8.1. Grant Object Format</a></li>
+      <li><a href="#grant-statuses">8.2. Grant Statuses</a></li>
+      <li><a href="#grants-list">8.3. Listing Grants</a></li>
+      <li><a href="#grants-get">8.4. Retrieving Individual Grants</a></li>
+      <li><a href="#grants-modify">8.5. Modifying Grants</a></li>
     </ul>
   </li>
-  <li><a href="#grants-api">9. Grants API</a>
+  <li><a href="#extensions">9. Extensions</a></li>
+  <li><a href="#examples">10. Examples</a></li>
+  <li><a href="#security">11. Security Considerations</a>
     <ul>
-      <li><a href="#grant-format">9.1. Grant Object Format</a></li>
-      <li><a href="#grant-statuses">9.2. Grant Statuses</a></li>
-      <li><a href="#grants-list">9.3. Listing Grants</a></li>
-      <li><a href="#grants-get">9.4. Retrieving Individual Grants</a></li>
-      <li><a href="#grants-modify">9.5. Modifying Grants</a></li>
+      <li><a href="#restricted-access">11.1. Restricted Access</a></li>
+      <li><a href="#rate-limiting">11.2. Rate Limiting</a></li>
     </ul>
   </li>
-  <li><a href="#directory-api">10. Directory API</a>
-    <ul>
-      <li><a href="#directory-entry-format">10.1. Directory Entry Object Format</a></li>
-      <li><a href="#directory-list">10.2. Listing Directory Entries</a></li>
-      <li><a href="#public-directory">10.3. Publicly Accessible Web Directory</a></li>
-    </ul>
-  </li>
-  <li><a href="#extensions">11. Extensions</a></li>
-  <li><a href="#examples">12. Examples</a></li>
-  <li><a href="#security">13. Security Considerations</a>
-    <ul>
-      <li><a href="#restricted-access">13.1. Restricted Access</a></li>
-      <li><a href="#rate-limiting">13.2. Rate Limiting</a></li>
-    </ul>
-  </li>
-  <li><a href="#references">14. References</a></li>
-  <li><a href="#acknowledgments">15. Acknowledgments</a></li>
-  <li><a href="#authors-addresses">16. Authors’ Addresses</a></li>
+  <li><a href="#references">12. References</a></li>
+  <li><a href="#acknowledgments">13. Acknowledgments</a></li>
+  <li><a href="#authors-addresses">14. Authors’ Addresses</a></li>
 </ul>
 
 <h2 id="1-introduction-">1. Introduction <a id="introduction" href="#introduction" class="permalink">🔗</a></h2>
@@ -340,14 +325,11 @@ This array of values MUST be the same as <code class="language-plaintext highlig
 <ul>
   <li><code class="language-plaintext highlighter-rouge">cds_oauth_version</code> - <em><a href="#string">string</a></em> - (REQUIRED) The version of the CDS-WG1-02 Client Registration specification that the Server has implemented, which for this version of the specification is <code class="language-plaintext highlighter-rouge">v1</code></li>
   <li><code class="language-plaintext highlighter-rouge">cds_human_registration</code> - <em><a href="#url">URL</a></em> - (REQUIRED) Where Clients who do not have the technical capacity to use the <code class="language-plaintext highlighter-rouge">registration_endpoint</code> can visit to manually register a Client using a user device</li>
-  <li><code class="language-plaintext highlighter-rouge">cds_human_directory</code> - <em><a href="#url">URL</a></em> - (REQUIRED) A public web interface where users may browse the list of Clients who have registered and set their Client Settings <code class="language-plaintext highlighter-rouge">profile_visibility</code> to <code class="language-plaintext highlighter-rouge">listed</code></li>
   <li><code class="language-plaintext highlighter-rouge">cds_test_accounts</code> - <em><a href="#url">URL</a></em> - (REQUIRED) Where Clients can find developer documentation on what test account credentials may be used for testing OAuth <code class="language-plaintext highlighter-rouge">response_type=code</code> authorization requests</li>
   <li><code class="language-plaintext highlighter-rouge">cds_clients_api</code> - <em><a href="#url">URL</a></em> - (REQUIRED) The base url for the <a href="#clients-api">Clients API</a></li>
-  <li><code class="language-plaintext highlighter-rouge">cds_client_settings_api</code> - <em><a href="#url">URL</a></em> - (REQUIRED) The base url for the <a href="#client-settings-api">Client Settings API</a></li>
   <li><code class="language-plaintext highlighter-rouge">cds_client_messages_api</code> - <em><a href="#url">URL</a></em> - (REQUIRED) The base url for the <a href="#client-messages-api">Client Messages API</a></li>
   <li><code class="language-plaintext highlighter-rouge">cds_scope_credentials_api</code> - <em><a href="#url">URL</a></em> - (REQUIRED) The base url for the <a href="#scope-creds-api">Scope Credentials API</a></li>
   <li><code class="language-plaintext highlighter-rouge">cds_grants_api</code> - <em><a href="#url">URL</a></em> - (REQUIRED) The base url for the <a href="#grants-api">Grants API</a></li>
-  <li><code class="language-plaintext highlighter-rouge">cds_directory_api</code> - <em><a href="#url">URL</a></em> - (REQUIRED) The base url for the <a href="#directory-api">Directory API</a></li>
   <li><code class="language-plaintext highlighter-rouge">cds_scope_descriptions</code> - <em>Map[<a href="#scope-descriptions-format">ScopeDescription</a>]</em> - (REQUIRED) An object providing additional information about what Scope values listed in <code class="language-plaintext highlighter-rouge">scopes_supported</code> mean.
 This object MUST include a key for each Scope listed in <code class="language-plaintext highlighter-rouge">scopes_supported</code> with a <a href="#scope-descriptions-format">Scope Description</a> as that key’s value.</li>
   <li><code class="language-plaintext highlighter-rouge">cds_registration_fields</code> - <em>Map[<a href="#registration-field-format">RegistrationField</a>]</em> - (REQUIRED) An object providing additional information about Registration Field that are referenced in <a href="#scope-descriptions-format">Scope Description’s</a> <code class="language-plaintext highlighter-rouge">registration_requirements</code> list.
@@ -516,7 +498,6 @@ If the Client’s CDSC server metadata is no different from the public CDSC serv
 If this metadata endpoint requires authentication, Servers MUST authenticate Client requests to this endpoint via Bearer access token obtained using OAuth’s <code class="language-plaintext highlighter-rouge">client_credentials</code> grant with a scope of <code class="language-plaintext highlighter-rouge">client_admin</code>, and reject unauthenticated requests with a <code class="language-plaintext highlighter-rouge">401 Unauthorized</code> response code.
 Clients know that they must use a Bearer token when Servers return a <code class="language-plaintext highlighter-rouge">401</code> response code for this endpoint when the Client makes an unauthenticated request to the endpoint.</li>
   <li><code class="language-plaintext highlighter-rouge">cds_clients_api</code> - <em><a href="#url">URL</a></em> - (REQUIRED) The base url for the <a href="#clients-api">Clients API</a>.</li>
-  <li><code class="language-plaintext highlighter-rouge">cds_client_settings_api</code> - <em><a href="#url">URL</a></em> - (REQUIRED) The url to a Client’s Settings object for the <a href="#client-settings-api">Client Settings API</a>.</li>
   <li><code class="language-plaintext highlighter-rouge">cds_client_messages_api</code> - <em><a href="#url">URL</a></em> - (REQUIRED) The base url for the <a href="#client-messages-api">Client Messages API</a>.</li>
   <li><code class="language-plaintext highlighter-rouge">cds_scope_credentials_api</code> - <em><a href="#url">URL</a></em> - (REQUIRED) The base url for the <a href="#scope-creds-api">Scope Credentials API</a>.</li>
   <li><code class="language-plaintext highlighter-rouge">cds_grants_api</code> - <em><a href="#url">URL</a></em> - (REQUIRED) The base url for the <a href="#grants-api">Grants API</a>.</li>
@@ -594,7 +575,6 @@ Clients MUST use the <a href="#scope-creds-api">Scope Credentials API</a> to dis
   <li><code class="language-plaintext highlighter-rouge">token_endpoint_auth_method</code> - Always <code class="language-plaintext highlighter-rouge">client_secret_basic</code>.</li>
   <li><code class="language-plaintext highlighter-rouge">cds_server_metadata</code> - This is a URL set by the Server.</li>
   <li><code class="language-plaintext highlighter-rouge">cds_clients_api</code> - This is a URL set by the Server.</li>
-  <li><code class="language-plaintext highlighter-rouge">cds_client_settings_api</code> - This is a URL set by the Server.</li>
   <li><code class="language-plaintext highlighter-rouge">cds_client_messages_api</code> - This is a URL set by the Server.</li>
   <li><code class="language-plaintext highlighter-rouge">cds_scope_credentials_api</code> - This is a URL set by the Server.</li>
   <li><code class="language-plaintext highlighter-rouge">cds_grants_api</code> - This is a URL set by the Server.</li>
@@ -610,105 +590,14 @@ Any fields that have not been synchronously updated as part of the request and r
 Clients MAY then use the <a href="#client-messages-api">Client Messages API</a> to track the asynchronous review of the modification request.
 If all submitted fields have been synchronously updated as part of the response, Servers MUST respond with a <code class="language-plaintext highlighter-rouge">200 OK</code> response.</p>
 
-<h2 id="6-client-settings-api-">6. Client Settings API <a id="client-settings-api" href="#client-settings-api" class="permalink">🔗</a></h2>
-
-<p>This specification requires Servers provide an API allowing Clients to view and manage their Client settings.
-While the settings fields are directly related to a specific registered Client, they are not included in the Client object itself in order to allow Clients to make partial updates to their settings values using an HTTPS <code class="language-plaintext highlighter-rouge">PATCH</code> request instead of a PUT request, which is required for the Client object updates to remain compatible with OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc7592">Dynamic Client Registration Management Protocol</a>.</p>
-
-<p>The Client Settings API are authenticated using a Bearer <code class="language-plaintext highlighter-rouge">access_token</code> obtained by the Client using OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc6749#section-4.4"><code class="language-plaintext highlighter-rouge">client_credentials</code> grant</a> process, where the <code class="language-plaintext highlighter-rouge">client_id</code> used is for a Client that includes the <code class="language-plaintext highlighter-rouge">client_admin</code> scope.</p>
-
-<p>Clients request their current <a href="#client-settings-format">Client Settings object</a> my making an authenticated HTTPS <code class="language-plaintext highlighter-rouge">GET</code> request to the <code class="language-plaintext highlighter-rouge">cds_client_settings_api</code> endpoint provided in the <a href="#client-format">Client object</a>.</p>
-
-<h3 id="61-client-settings-object-format-">6.1. Client Settings Object Format <a id="client-settings-format" href="#client-settings-format" class="permalink">🔗</a></h3>
-
-<p>Client Settings objects are formatted as JSON objects and contain the following named values:</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">default_scope</code> - <em><a href="#string">string</a></em> - (REQUIRED) A space-separated list of scopes the Server will use for OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc6749#section-4.1.1">Authorization Requests</a> if the Client does not supply a <code class="language-plaintext highlighter-rouge">scope</code> or <code class="language-plaintext highlighter-rouge">authorization_details</code> parameter in the request.</li>
-  <li><code class="language-plaintext highlighter-rouge">profile_visibility</code> - <em><a href="#profile-visibility">ProfileVisibility</a></em> - (REQUIRED) This is visibility configuration of a Client in the <a href="#directory-api">Directory API</a>.</li>
-  <li><code class="language-plaintext highlighter-rouge">profile_visibility_options</code> - <em>Array[<a href="#profile-visibility">ProfileVisibility</a>]</em> - (REQUIRED) This is the list of available Profile Visibility values that the Client may choose to set as their <code class="language-plaintext highlighter-rouge">profile_visibility</code>.</li>
-  <li><code class="language-plaintext highlighter-rouge">profile_description</code> - <em><a href="#string">string</a></em> - (REQUIRED) This is the description that the Client wishes to be displayed in their public directory entry, if <code class="language-plaintext highlighter-rouge">profile_visibility</code> is set to <code class="language-plaintext highlighter-rouge">autolist</code>, <code class="language-plaintext highlighter-rouge">unlisted</code>, or <code class="language-plaintext highlighter-rouge">listed</code>.</li>
-  <li><code class="language-plaintext highlighter-rouge">profile_uri</code> - <em><a href="#url">URL</a></em> - (REQUIRED) This is the URL that links directly to the Client’s entry in the Server’s publicly accessible directory web interface, if <code class="language-plaintext highlighter-rouge">profile_visibility</code> is set to <code class="language-plaintext highlighter-rouge">autolist</code>, <code class="language-plaintext highlighter-rouge">unlisted</code>, or <code class="language-plaintext highlighter-rouge">listed</code>.
-If a Client has set their <code class="language-plaintext highlighter-rouge">profile_visibility</code> to <code class="language-plaintext highlighter-rouge">disabled</code>, the Server MUST respond to requests to this URL with a 404 Not Found response code.</li>
-  <li><code class="language-plaintext highlighter-rouge">profile_slug</code> - <em><a href="#string">string</a></em> - (OPTIONAL) For Servers that have the ability to partially customize the <code class="language-plaintext highlighter-rouge">profile_uri</code> string to be a more human-readable URL, this is the part of the URL that is customizable by the Client.</li>
-  <li><code class="language-plaintext highlighter-rouge">profile_button_uri</code> - <em><a href="#url">URL</a> or <code class="language-plaintext highlighter-rouge">null</code></em> - (REQUIRED) In the profile entry for a Client, Servers MUST offer the ability for the Client to link users to a Client-provided URL.
-Servers MUST implement this as an anchor link styled as one of the specified <a href="#button-styles">Button Styles</a> that opens a new tab via the <code class="language-plaintext highlighter-rouge">target="_blank"</code> anchor attribute for the user.
-If a Client sets this value to <code class="language-plaintext highlighter-rouge">null</code>, then the Server MUST NOT render the button link in the Client’s directory profile entry.</li>
-  <li><code class="language-plaintext highlighter-rouge">profile_button_style</code> - <em><a href="#button-styles">ButtonStyle</a></em> - (REQUIRED) This is the style of button the Server has set for the <code class="language-plaintext highlighter-rouge">profile_button_uri</code>.</li>
-  <li><code class="language-plaintext highlighter-rouge">profile_button_style_options</code> - <em>Array[<a href="#button-styles">ButtonStyle</a>]</em> - (REQUIRED) This is a list of <a href="#button-styles">Button Styles</a> available for the Client to set as their button style in their directory entry.</li>
-  <li><code class="language-plaintext highlighter-rouge">profile_contact_name</code> - <em><a href="#string">string</a></em> - (REQUIRED) This the contact name to be listed in the public directory entry for the Client.</li>
-  <li><code class="language-plaintext highlighter-rouge">profile_contact_email</code> - <em><a href="https://en.wikipedia.org/wiki/E.123">E.123</a> email address</em> - (REQUIRED) This the contact email to be listed in the public directory entry for the Client.</li>
-  <li><code class="language-plaintext highlighter-rouge">profile_contact_phone</code> - <em><a href="https://en.wikipedia.org/wiki/E.123">E.123</a> international phone number or <code class="language-plaintext highlighter-rouge">null</code></em> - (REQUIRED) This the contact phone number to be listed in the public directory entry for the Client.
-If the Client sets this to <code class="language-plaintext highlighter-rouge">null</code>, the phone number field MUST be hidden on the Client’s public directory profile entry by the Server.</li>
-  <li><code class="language-plaintext highlighter-rouge">profile_contact_website</code> - <em><a href="#url">URL</a> or <code class="language-plaintext highlighter-rouge">null</code></em> - (REQUIRED) This is a link to a website the Client wishes the user to visit for more information on how to contact them.
-If the Client sets this to <code class="language-plaintext highlighter-rouge">null</code>, the website field MUST be hidden on the Client’s public directory profile entry by the Server.</li>
-</ul>
-
-<h3 id="62-profile-visibility-">6.2. Profile Visibility <a id="profile-visibility" href="#profile-visibility" class="permalink">🔗</a></h3>
-
-<p>Servers MUST make available the following Profile Visibility options in the <code class="language-plaintext highlighter-rouge">profile_visibility_options</code> list:</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">listed</code> - Servers MUST include the Client profile entry in both the <a href="#directory-list">Directory API list</a> and <a href="#public-directory">Publicly Accessible Web Directory</a>.
-If Servers are asynchronously reviewing Clients before approving production access to scopes, Servers MUST NOT include this option in the list of <code class="language-plaintext highlighter-rouge">profile_visibility_options</code> until the Server has completed and approve the Client for production access to at least one of the non-<code class="language-plaintext highlighter-rouge">client_admin</code> scopes, and instead include <code class="language-plaintext highlighter-rouge">autolist</code> in the list of <code class="language-plaintext highlighter-rouge">profile_visibility_options</code>.
-For Client profile entries, Servers MUST NOT render the profile entry with <code class="language-plaintext highlighter-rouge">X-robots-tag</code> or <code class="language-plaintext highlighter-rouge">&lt;meta name="robots" ...&gt;</code> HTML head tags with a value of <code class="language-plaintext highlighter-rouge">noindex</code>, so that Client profile entries may be indexed by web search engines.</li>
-  <li><code class="language-plaintext highlighter-rouge">autolist</code> - If Servers are asynchronously reviewing Clients before approving production access to scopes, Servers MUST include this option in the list of <code class="language-plaintext highlighter-rouge">profile_visibility_options</code> until the Server has completed and approve the Client for production access to at least one of the non-<code class="language-plaintext highlighter-rouge">client_admin</code> scopes and NOT include <code class="language-plaintext highlighter-rouge">listed</code> in the list of <code class="language-plaintext highlighter-rouge">profile_visibility_options</code>.
-If the Client has set their <code class="language-plaintext highlighter-rouge">profile_visibility</code> to <code class="language-plaintext highlighter-rouge">autolist</code>, when the Server approves at least one non-<code class="language-plaintext highlighter-rouge">client_admin</code> scope for production use, the Server MUST automatically switch the Client’s <code class="language-plaintext highlighter-rouge">profile_visibility</code> setting from <code class="language-plaintext highlighter-rouge">autolist</code> to <code class="language-plaintext highlighter-rouge">listed</code> and remove <code class="language-plaintext highlighter-rouge">autolist</code> from the list of <code class="language-plaintext highlighter-rouge">profile_visibility_options</code>.
-The behavior of this option is the same as the <code class="language-plaintext highlighter-rouge">unlisted</code> Profile Visibility option, with the exception that the Server MUST prominently display a banner message in the rendered profile entry to users that the Client has not yet been approved for production use.</li>
-  <li><code class="language-plaintext highlighter-rouge">unlisted</code> - Servers MUST NOT include the Client profile entry in the <a href="#directory-list">Directory API list</a> or <a href="#public-directory">Publicly Accessible Web Directory</a>.
-However, the <code class="language-plaintext highlighter-rouge">profile_uri</code> will be publicly visible when requested directly by a user directly and the response to the <code class="language-plaintext highlighter-rouge">profile_uri</code> MUST include a <code class="language-plaintext highlighter-rouge">X-robots-tag</code> response header with <code class="language-plaintext highlighter-rouge">noindex</code> in the header values or a <code class="language-plaintext highlighter-rouge">&lt;meta name="robots" ...&gt;</code> HTML head tag with <code class="language-plaintext highlighter-rouge">noindex</code> included in the <code class="language-plaintext highlighter-rouge">content</code> attribute, so that web search engines do not index the profile entry.</li>
-  <li><code class="language-plaintext highlighter-rouge">disabled</code> - Servers MUST NOT include the Client profile entry in the <a href="#directory-list">Directory API list</a> or <a href="#public-directory">Publicly Accessible Web Directory</a>.
-The Server MUST also return a 404 Not Found response code for requests made to the Client’s <code class="language-plaintext highlighter-rouge">profile_uri</code>.</li>
-</ul>
-
-<h3 id="63-button-styles-">6.3. Button Styles <a id="button-styles" href="#button-styles" class="permalink">🔗</a></h3>
-
-<p>Clients may have registered to a server for different purposes, so their Client profile entry button links may need to be styled as different actions based on the Client’s use case.
-Servers MUST offer the following button styles for Clients to set as their <code class="language-plaintext highlighter-rouge">profile_button_style</code>:</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">authorize</code> - Rendered as a button indicating to the user that the button will allow the user to authorize the Client in some fashion, such as a button saying “Authorize {client_name}”.</li>
-  <li><code class="language-plaintext highlighter-rouge">link</code> - Rendered as a button indicating to the user that the button will allow the user to link or connect the user’s account to the Client, such as a button saying “Link your account with {client_name}”.</li>
-  <li><code class="language-plaintext highlighter-rouge">goto</code> - Rendered as a button indicating to the user that the button will allow the user to go to the Client’s website, such as a button saying “Visit the {client_name} website”.</li>
-</ul>
-
-<h3 id="64-modifying-client-settings-">6.4. Modifying Client Settings <a id="clients-settings-modify" href="#clients-settings-modify" class="permalink">🔗</a></h3>
-
-<p>Clients may modify fields in the Client Settings API by sending an authenticated HTTPS <code class="language-plaintext highlighter-rouge">PATCH</code> request to the <code class="language-plaintext highlighter-rouge">cds_client_settings_api</code> endpoint with the body of the request formatted a JSON object.
-The fields included in JSON object are the fields the Client intends to update with the submitted fields’ values.
-If a field is not included in the <code class="language-plaintext highlighter-rouge">PATCH</code> request, the Server MUST leave the field unmodified from its current value.</p>
-
-<p>The following are fields that MAY be included in the <code class="language-plaintext highlighter-rouge">PATCH</code> request, and modification MUST be supported by Servers:</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">default_scope</code></li>
-  <li><code class="language-plaintext highlighter-rouge">profile_visibility</code></li>
-  <li><code class="language-plaintext highlighter-rouge">profile_description</code></li>
-  <li><code class="language-plaintext highlighter-rouge">profile_slug</code></li>
-  <li><code class="language-plaintext highlighter-rouge">profile_button_uri</code></li>
-  <li><code class="language-plaintext highlighter-rouge">profile_button_style</code></li>
-  <li><code class="language-plaintext highlighter-rouge">profile_contact_name</code></li>
-  <li><code class="language-plaintext highlighter-rouge">profile_contact_email</code></li>
-  <li><code class="language-plaintext highlighter-rouge">profile_contact_phone</code></li>
-  <li><code class="language-plaintext highlighter-rouge">profile_contact_website</code></li>
-</ul>
-
-<p>Servers MUST reject requests with a <code class="language-plaintext highlighter-rouge">400 Bad Request</code> response when fields are submitted that are not able to be modified by the Client or the submitted values are invalid.
-For valid <code class="language-plaintext highlighter-rouge">PATCH</code> requests from Clients, Servers MUST respond with a <code class="language-plaintext highlighter-rouge">200 OK</code> or <code class="language-plaintext highlighter-rouge">202 Accepted</code> response with an updated JSON object of the complete current Client Settings object.</p>
-
-<p>If a Server needs to asynchronously review and approve changes to any submitted Client Settings object fields that have been submitted by the Client and are different from the current values, for valid modification requests the Server MUST respond with a <code class="language-plaintext highlighter-rouge">202 Accepted</code> response, which indicates that the submission was accepted but not fully saved as completed yet.
-Any fields that have not been synchronously updated as part of the request and response MUST remain in the response as their previous values, and the Server MUST add one or more entries to the <a href="#clients-messages-list">listed Client Messages</a> for the modified fields that need to be asynchronously reviewed and approved.
-Clients MAY then use the <a href="#client-messages-api">Client Messages API</a> to track the asynchronous review of the modification request.
-If all submitted fields have been synchronously updated as part of the response, Servers MUST respond with a <code class="language-plaintext highlighter-rouge">200 OK</code> response.</p>
-
-<h2 id="7-client-messages-api-">7. Client Messages API <a id="client-messages-api" href="#client-messages-api" class="permalink">🔗</a></h2>
+<h2 id="6-client-messages-api-">6. Client Messages API <a id="client-messages-api" href="#client-messages-api" class="permalink">🔗</a></h2>
 
 <p>To facilitate automated communication and notificatiosn between Servers and Clients, this specification requires that official communication between Servers and Clients be performed using the Client Messages APIs.
 Servers MAY implement other means of communications for exchanging messages and notifications, such as email support, but they MUST also mirror any official communications that impact Client or Grant statuses, settings, or access using the Client Messages API.</p>
 
 <p>The Client Messages API endpoints are authenticated using a Bearer <code class="language-plaintext highlighter-rouge">access_token</code> obtained by the Client using OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc6749#section-4.4"><code class="language-plaintext highlighter-rouge">client_credentials</code> grant</a> process, where the <code class="language-plaintext highlighter-rouge">client_id</code> used is for a Client that includes the <code class="language-plaintext highlighter-rouge">client_admin</code> scope.</p>
 
-<h3 id="71-client-message-object-format-">7.1. Client Message Object Format <a id="client-message-format" href="#client-message-format" class="permalink">🔗</a></h3>
+<h3 id="61-client-message-object-format-">6.1. Client Message Object Format <a id="client-message-format" href="#client-message-format" class="permalink">🔗</a></h3>
 
 <p>Client Message objects are formatted as JSON objects and contain the following named values:</p>
 
@@ -738,7 +627,7 @@ If the Client Message <code class="language-plaintext highlighter-rouge">type</c
   <li><code class="language-plaintext highlighter-rouge">currency</code> - <em><a href="#string">string</a></em> - (OPTIONAL) If the Client Message <code class="language-plaintext highlighter-rouge">type</code> is <code class="language-plaintext highlighter-rouge">payment_request</code>, this is the monetary currency for the <code class="language-plaintext highlighter-rouge">amount</code> in <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a> currency code.</li>
 </ul>
 
-<h3 id="72-client-message-types-">7.2. Client Message Types <a id="client-message-types" href="#client-message-types" class="permalink">🔗</a></h3>
+<h3 id="62-client-message-types-">6.2. Client Message Types <a id="client-message-types" href="#client-message-types" class="permalink">🔗</a></h3>
 
 <p>Client Message object <code class="language-plaintext highlighter-rouge">type</code> values MUST be one of the following:</p>
 
@@ -756,7 +645,7 @@ Both Clients and Servers MAY create these types of Client Message requests.</li>
   <li><code class="language-plaintext highlighter-rouge">payment_request</code> - The Server is requesting payment by the Client to complete a financial payment before the Client may proceed with either registration approval or completing actions listed in the <code class="language-plaintext highlighter-rouge">updates_requested</code> list.</li>
 </ul>
 
-<h3 id="73-client-message-statuses-">7.3. Client Message Statuses <a id="client-message-statuses" href="#client-message-statuses" class="permalink">🔗</a></h3>
+<h3 id="63-client-message-statuses-">6.3. Client Message Statuses <a id="client-message-statuses" href="#client-message-statuses" class="permalink">🔗</a></h3>
 
 <p>Client Message object <code class="language-plaintext highlighter-rouge">status</code> values MUST be one of the following:</p>
 
@@ -770,7 +659,7 @@ For Client Messages with <code class="language-plaintext highlighter-rouge">type
 The Client is RECOMMENDED to submit a <code class="language-plaintext highlighter-rouge">support_request</code> Client Messages with the <code class="language-plaintext highlighter-rouge">related_uri</code> as the relevant errored Client Message’s <code class="language-plaintext highlighter-rouge">uri</code>.</li>
 </ul>
 
-<h3 id="74-client-update-request-object-format-">7.4. Client Update Request Object Format <a id="client-update-request-format" href="#client-update-request-format" class="permalink">🔗</a></h3>
+<h3 id="64-client-update-request-object-format-">6.4. Client Update Request Object Format <a id="client-update-request-format" href="#client-update-request-format" class="permalink">🔗</a></h3>
 
 <p>Client Update Request objects are formatted as JSON objects and contain the following named values:</p>
 
@@ -785,7 +674,7 @@ For Client Messages with <code class="language-plaintext highlighter-rouge">type
   <li><code class="language-plaintext highlighter-rouge">new_value</code> - <em>various</em> - (OPTIONAL) For Client Messages with <code class="language-plaintext highlighter-rouge">type</code> values of <code class="language-plaintext highlighter-rouge">field_changes</code>, this MUST be the value of the field that the is being requested to be changed to.</li>
 </ul>
 
-<h3 id="75-listing-client-messages-">7.5. Listing Client Messages <a id="clients-messages-list" href="#clients-messages-list" class="permalink">🔗</a></h3>
+<h3 id="65-listing-client-messages-">6.5. Listing Client Messages <a id="clients-messages-list" href="#clients-messages-list" class="permalink">🔗</a></h3>
 
 <p>Clients may request to list Client Message objects that they have access to by making an HTTPS <code class="language-plaintext highlighter-rouge">GET</code> request, authenticated with a valid Bearer <code class="language-plaintext highlighter-rouge">access_token</code> scoped to the <code class="language-plaintext highlighter-rouge">client_admin</code> scope, to the <code class="language-plaintext highlighter-rouge">cds_client_messages_api</code> URL included in the <a href="#registration-response">Client Registration Response</a> or <a href="#client-format">Clients API</a>. The Client Message listing request responses are formatted as JSON objects and contain the following named values.</p>
 
@@ -812,7 +701,7 @@ For example, if the Client requests a <code class="language-plaintext highlighte
 
 <p>Listings of Client Message objects MUST be ordered in reverse chronological order by <code class="language-plaintext highlighter-rouge">modified</code> timestamp, where the most recently modified relevant Client Message MUST be first in each listing.</p>
 
-<h3 id="76-creating-client-messages-">7.6. Creating Client Messages <a id="clients-messages-create" href="#clients-messages-create" class="permalink">🔗</a></h3>
+<h3 id="66-creating-client-messages-">6.6. Creating Client Messages <a id="clients-messages-create" href="#clients-messages-create" class="permalink">🔗</a></h3>
 
 <p>Clients create new Client Messages by sending an authenticated HTTPS <code class="language-plaintext highlighter-rouge">POST</code> request to the <code class="language-plaintext highlighter-rouge">cds_client_messages_api</code> endpoint with the body of the request formatted a JSON object.
 The fields included in JSON object MUST include the following:</p>
@@ -847,7 +736,7 @@ For <code class="language-plaintext highlighter-rouge">type</code> values of <co
 
 <p>When Clients submit Client Messages with <code class="language-plaintext highlighter-rouge">type</code> value of <code class="language-plaintext highlighter-rouge">client_submission</code>, if the Client Message referenced in the <code class="language-plaintext highlighter-rouge">previous_uri</code> has a <code class="language-plaintext highlighter-rouge">status</code> of <code class="language-plaintext highlighter-rouge">open</code>, then the Server MUST update the <code class="language-plaintext highlighter-rouge">status</code> of that referenced Client Message to <code class="language-plaintext highlighter-rouge">pending</code>, which indicates that the Client has submitted a response for Server review.</p>
 
-<h3 id="77-modifying-client-messages-">7.7. Modifying Client Messages <a id="clients-messages-modify" href="#clients-messages-modify" class="permalink">🔗</a></h3>
+<h3 id="67-modifying-client-messages-">6.7. Modifying Client Messages <a id="clients-messages-modify" href="#clients-messages-modify" class="permalink">🔗</a></h3>
 
 <p>Clients may modify fields in a Client Messages object by sending an authenticated HTTPS <code class="language-plaintext highlighter-rouge">PATCH</code> request to the Client Message <code class="language-plaintext highlighter-rouge">uri</code> endpoint with the body of the request formatted a JSON object.
 The fields included in JSON object are the fields the Client intends to modify with the submitted fields’ values.
@@ -865,14 +754,14 @@ Severs MUST process newer Client Messages created by the Client as overriding th
 <p>If a Client wishes to amend a previously created Client Message of type <code class="language-plaintext highlighter-rouge">private_message</code> or <code class="language-plaintext highlighter-rouge">support_request</code> they created, the Client MUST <a href="#clients-messages-create">create a new Client Message</a> with the <code class="language-plaintext highlighter-rouge">previous_uri</code> value set as the Client Message <code class="language-plaintext highlighter-rouge">uri</code> for which they are wanting to amend.
 Severs MUST consider newer Client Messages created by the Client as amending the Client’s previous support request or message.</p>
 
-<h2 id="8-scope-credentials-api-">8. Scope Credentials API <a id="scope-creds-api" href="#scope-creds-api" class="permalink">🔗</a></h2>
+<h2 id="7-scope-credentials-api-">7. Scope Credentials API <a id="scope-creds-api" href="#scope-creds-api" class="permalink">🔗</a></h2>
 
 <p>To allow Clients to manage <code class="language-plaintext highlighter-rouge">client_secret</code> values used for authentication to APIs, this specification requires that Server implement a Scope Credentials API.
 Servers MAY implement other means of managing Scope Credentials, such as a web interface, but they MUST also mirror any Scope Credentials managed by other means on this required Scope Credentials API.</p>
 
 <p>The Scope Credentials API endpoints are authenticated using a Bearer <code class="language-plaintext highlighter-rouge">access_token</code> obtained by the Client using OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc6749#section-4.4"><code class="language-plaintext highlighter-rouge">client_credentials</code> grant</a> process, where the <code class="language-plaintext highlighter-rouge">client_id</code> used is for a Client that includes the <code class="language-plaintext highlighter-rouge">client_admin</code> scope.</p>
 
-<h3 id="81-scope-credentials-object-format-">8.1. Scope Credentials Object Format <a id="scope-creds-format" href="#scope-creds-format" class="permalink">🔗</a></h3>
+<h3 id="71-scope-credentials-object-format-">7.1. Scope Credentials Object Format <a id="scope-creds-format" href="#scope-creds-format" class="permalink">🔗</a></h3>
 
 <p>Scope Credentials objects are formatted as JSON objects and contain the following named values:</p>
 
@@ -910,7 +799,7 @@ This MAY be added by Servers who have different authorization interfaces for dif
 This MAY be added by Servers who have different token interfaces for different sets of scopes.</li>
 </ul>
 
-<h3 id="82-scope-credentials-statuses-">8.2. Scope Credentials Statuses <a id="scope-creds-statuses" href="#scope-creds-statuses" class="permalink">🔗</a></h3>
+<h3 id="72-scope-credentials-statuses-">7.2. Scope Credentials Statuses <a id="scope-creds-statuses" href="#scope-creds-statuses" class="permalink">🔗</a></h3>
 
 <p>Scope Credential object <code class="language-plaintext highlighter-rouge">status</code> values MUST be one of the following:</p>
 
@@ -924,7 +813,7 @@ For scopes that require user authorization (i.e. <code class="language-plaintext
   <li><code class="language-plaintext highlighter-rouge">disabled</code> - The Scope Credential is disabled.</li>
 </ul>
 
-<h3 id="83-evaluating-authorization-request-scopes-">8.3. Evaluating Authorization Request Scopes <a id="auth-request-scope-evaluation" href="#auth-request-scope-evaluation" class="permalink">🔗</a></h3>
+<h3 id="73-evaluating-authorization-request-scopes-">7.3. Evaluating Authorization Request Scopes <a id="auth-request-scope-evaluation" href="#auth-request-scope-evaluation" class="permalink">🔗</a></h3>
 
 <p>When responding to an OAuth <a href="https://www.rfc-editor.org/rfc/rfc6749#section-4.1.1">authorization request</a>, Servers MUST evaluate the requested <code class="language-plaintext highlighter-rouge">scope</code> or <code class="language-plaintext highlighter-rouge">authorization_details</code> against the <code class="language-plaintext highlighter-rouge">scope</code> and <code class="language-plaintext highlighter-rouge">authorization_details</code> listed in all of the Client’s Scope Credentials objects.
 If the authorization request’s <code class="language-plaintext highlighter-rouge">scope</code> or <code class="language-plaintext highlighter-rouge">authorization_details</code> is compatible with all or a subset of an individual Scope Credential’s <code class="language-plaintext highlighter-rouge">scope</code> or <code class="language-plaintext highlighter-rouge">authorization_details</code>, and the <code class="language-plaintext highlighter-rouge">status</code> of the Scope Credential is compatible with the type of authenticated user (<code class="language-plaintext highlighter-rouge">production_and_sandbox</code> for any test or real users, <code class="language-plaintext highlighter-rouge">sandbox_only</code> for test users, <code class="language-plaintext highlighter-rouge">production_only</code> for real users), and the <code class="language-plaintext highlighter-rouge">redirect_uri</code> parameter in the authorization request is listed in the Scope Credential.</p>
@@ -933,7 +822,7 @@ If the authorization request’s <code class="language-plaintext highlighter-rou
 When the user authorizes, the <code class="language-plaintext highlighter-rouge">code</code> parameter created by the Server and sent to the Client via the <code class="language-plaintext highlighter-rouge">redirect_uri</code> parameter MUST be able to be used to obtain an <code class="language-plaintext highlighter-rouge">access_token</code> via the token endpoint using any of the matching Scope Credentials’ <code class="language-plaintext highlighter-rouge">client_secret</code> values.
 If one of the compatible Scope Credentials <span style="background-color:yellow">TODO</span></p>
 
-<h3 id="84-listing-scope-credentials-">8.4. Listing Scope Credentials <a id="scope-creds-list" href="#scope-creds-list" class="permalink">🔗</a></h3>
+<h3 id="74-listing-scope-credentials-">7.4. Listing Scope Credentials <a id="scope-creds-list" href="#scope-creds-list" class="permalink">🔗</a></h3>
 
 <p>Clients may request to list Scope Credential objects that they have access to by making an HTTPS <code class="language-plaintext highlighter-rouge">GET</code> request, authenticated with a valid Bearer <code class="language-plaintext highlighter-rouge">access_token</code> scoped to the <code class="language-plaintext highlighter-rouge">client_admin</code> scope, to the <code class="language-plaintext highlighter-rouge">cds_scope_credentials_api</code> URL included in the <a href="#registration-response">Client Registration Response</a> or <a href="#client-format">Clients API</a>.
 The Scope Credential listing request responses are formatted as JSON objects and contain the following named values.</p>
@@ -961,11 +850,11 @@ If no previous segment exists (i.e. the requester is at the front of the list), 
 
 <p>Listings of Scope Credential objects MUST be ordered in reverse chronological order by <code class="language-plaintext highlighter-rouge">modified</code> timestamp, where the most recently modified relevant Scope Credential MUST be first in each listing.</p>
 
-<h3 id="85-retrieving-individual-scope-credentials-">8.5. Retrieving Individual Scope Credentials <a id="scope-creds-get" href="#scope-creds-get" class="permalink">🔗</a></h3>
+<h3 id="75-retrieving-individual-scope-credentials-">7.5. Retrieving Individual Scope Credentials <a id="scope-creds-get" href="#scope-creds-get" class="permalink">🔗</a></h3>
 
 <p>The URL to be used to send <code class="language-plaintext highlighter-rouge">GET</code> requests for retrieving individual Scope Credential objects MUST be the Scope Credential <code class="language-plaintext highlighter-rouge">uri</code> provided in the <a href="#scope-creds-format">Scope Credential object</a>.</p>
 
-<h3 id="86-creating-scope-credentials-">8.6. Creating Scope Credentials <a id="scope-creds-create" href="#scope-creds-create" class="permalink">🔗</a></h3>
+<h3 id="76-creating-scope-credentials-">7.6. Creating Scope Credentials <a id="scope-creds-create" href="#scope-creds-create" class="permalink">🔗</a></h3>
 
 <p>Clients create new Scope Credentials by sending an authenticated HTTPS <code class="language-plaintext highlighter-rouge">POST</code> request to the <code class="language-plaintext highlighter-rouge">cds_scope_credentials_api</code> endpoint with the body of the request formatted a JSON object.
 The fields included in JSON object MUST include the following:</p>
@@ -1003,7 +892,7 @@ For scopes for which user authorization is not required, this is always a single
   <li><code class="language-plaintext highlighter-rouge">token_endpoint</code> - <em><a href="#url">URL</a></em> - (OPTIONAL) If different from the Client object’s <code class="language-plaintext highlighter-rouge">token_endpoint</code> value.</li>
 </ul>
 
-<h3 id="87-modifying-scope-credentials-">8.7. Modifying Scope Credentials <a id="scope-creds-modify" href="#scope-creds-modify" class="permalink">🔗</a></h3>
+<h3 id="77-modifying-scope-credentials-">7.7. Modifying Scope Credentials <a id="scope-creds-modify" href="#scope-creds-modify" class="permalink">🔗</a></h3>
 
 <p>Clients may modify fields in the Scope Credentials API by sending an authenticated HTTPS <code class="language-plaintext highlighter-rouge">PATCH</code> request to the Scope Credential <code class="language-plaintext highlighter-rouge">uri</code> endpoint with the body of the request formatted a JSON object.
 The fields included in JSON object are the fields the Client intends to update with the submitted fields’ values.
@@ -1031,12 +920,12 @@ If all submitted fields have been synchronously updated as part of the response,
 
 <p>If a Client updates the <code class="language-plaintext highlighter-rouge">status</code> of a Scope Credential to <code class="language-plaintext highlighter-rouge">disabled</code>, the Server MUST assume the Scope Credential is compromised and synchronously disable the Scope Credential’s <code class="language-plaintext highlighter-rouge">client_secret</code> from being used on the token endpoint and revoke any <code class="language-plaintext highlighter-rouge">access_token</code> or <code class="language-plaintext highlighter-rouge">refresh_token</code> values issued by the token endpoint as a result of using the now-disabled Scope Credential.</p>
 
-<h2 id="9-grants-api-">9. Grants API <a id="grants-api" href="#grants-api" class="permalink">🔗</a></h2>
+<h2 id="8-grants-api-">8. Grants API <a id="grants-api" href="#grants-api" class="permalink">🔗</a></h2>
 
 <p>This specification requires Servers provide an API allowing Clients to view and edit OAuth user authorizations and client credentials grants (“Grants”) related to their registration.
 These APIs are authenticated using a Bearer <code class="language-plaintext highlighter-rouge">access_token</code> obtained by the Client using OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc6749#section-4.4"><code class="language-plaintext highlighter-rouge">client_credentials</code> grant</a> process, where the <code class="language-plaintext highlighter-rouge">client_id</code> used is for a Client that includes the <code class="language-plaintext highlighter-rouge">client_admin</code> scope.</p>
 
-<h3 id="91-grant-object-format-">9.1. Grant Object Format <a id="grant-format" href="#grant-format" class="permalink">🔗</a></h3>
+<h3 id="81-grant-object-format-">8.1. Grant Object Format <a id="grant-format" href="#grant-format" class="permalink">🔗</a></h3>
 
 <p>Grant objects are formatted as JSON objects and contain the following named values:</p>
 
@@ -1080,7 +969,7 @@ For Grants that have had their access removed (e.g. <code class="language-plaint
   <li><code class="language-plaintext highlighter-rouge">sub_authorization_scopes</code> - <em>Array[<a href="#string">string</a>]</em> - (REQUIRED) For Grants that require sub-authorizations where users must provide additional authorization to enable access, this is the outstanding list of <code class="language-plaintext highlighter-rouge">scope</code> values that have yet to be authorized individually by users.</li>
 </ul>
 
-<h3 id="92-grant-statuses-">9.2. Grant Statuses <a id="grant-statuses" href="#grant-statuses" class="permalink">🔗</a></h3>
+<h3 id="82-grant-statuses-">8.2. Grant Statuses <a id="grant-statuses" href="#grant-statuses" class="permalink">🔗</a></h3>
 
 <p>Grants object <code class="language-plaintext highlighter-rouge">status</code> values MUST be one of the following:</p>
 
@@ -1108,7 +997,7 @@ Access to existing data is still available, but the Client should not expect upd
 
 <p>Grant <code class="language-plaintext highlighter-rouge">status</code> values of <code class="language-plaintext highlighter-rouge">future</code>, <code class="language-plaintext highlighter-rouge">disabled</code>, <code class="language-plaintext highlighter-rouge">suspended</code>, <code class="language-plaintext highlighter-rouge">revoked</code>, <code class="language-plaintext highlighter-rouge">closed</code>, and <code class="language-plaintext highlighter-rouge">expired</code> indicate that access to all features and data that were accessible via this Grant are no longer accessible.</p>
 
-<h3 id="93-listing-grants-">9.3. Listing Grants <a id="grants-list" href="#grants-list" class="permalink">🔗</a></h3>
+<h3 id="83-listing-grants-">8.3. Listing Grants <a id="grants-list" href="#grants-list" class="permalink">🔗</a></h3>
 
 <p>Clients may request to list Grant objects that they have access to by making an HTTPS <code class="language-plaintext highlighter-rouge">GET</code> request, authenticated with a valid Bearer <code class="language-plaintext highlighter-rouge">access_token</code> scoped to the <code class="language-plaintext highlighter-rouge">client_admin</code> scope, to the <code class="language-plaintext highlighter-rouge">cds_grants_api</code> URL included in the <a href="#registration-response">Client Registration Response</a> or <a href="#client-format">Clients API</a>.
 The Grant listing request responses are formatted as JSON objects and contain the following named values.</p>
@@ -1137,11 +1026,11 @@ If no previous segment exists (i.e. the requester is at the front of the list), 
 
 <p>Listings of Grant objects MUST be ordered in reverse chronological order by <code class="language-plaintext highlighter-rouge">modified</code> timestamp, where the most recently updated relevant Grant MUST be first in each listing.</p>
 
-<h3 id="94-retrieving-individual-grants-">9.4. Retrieving Individual Grants <a id="grants-get" href="#grants-get" class="permalink">🔗</a></h3>
+<h3 id="84-retrieving-individual-grants-">8.4. Retrieving Individual Grants <a id="grants-get" href="#grants-get" class="permalink">🔗</a></h3>
 
 <p>The URL to be used to send <code class="language-plaintext highlighter-rouge">GET</code> requests for retrieving individual Grant objects MUST be the Grant <code class="language-plaintext highlighter-rouge">uri</code> provided in the <a href="#grant-format">Grant object</a>.</p>
 
-<h3 id="95-modifying-grants-">9.5. Modifying Grants <a id="grants-modify" href="#grants-modify" class="permalink">🔗</a></h3>
+<h3 id="85-modifying-grants-">8.5. Modifying Grants <a id="grants-modify" href="#grants-modify" class="permalink">🔗</a></h3>
 
 <p>Clients may modify fields in the Grants API by sending an authenticated HTTPS <code class="language-plaintext highlighter-rouge">PATCH</code> request to the Grant <code class="language-plaintext highlighter-rouge">uri</code> endpoint with the body of the request formatted a JSON object.
 The fields included in JSON object are the fields the Client intends to update with the submitted fields’ values.
@@ -1165,87 +1054,6 @@ For valid <code class="language-plaintext highlighter-rouge">PATCH</code> reques
 <p>If a Server needs to asynchronously review and approve changes to any submitted Grant object fields that have been submitted by the Client and are different from the current values, for valid modification requests the Server MUST update the Grant’s <code class="language-plaintext highlighter-rouge">status</code> to <code class="language-plaintext highlighter-rouge">pending</code> in the response.
 Additionally, if the <code class="language-plaintext highlighter-rouge">scope</code> or <code class="language-plaintext highlighter-rouge">authorization_details</code> has been updated, the Server MUST update the <code class="language-plaintext highlighter-rouge">enabled_scope</code> and <code class="language-plaintext highlighter-rouge">enabled_authorization_details</code> to reflect for what the Client currently has access while the Grant is pending.</p>
 
-<h2 id="10-directory-api-">10. Directory API <a id="directory-api" href="#directory-api" class="permalink">🔗</a></h2>
-
-<p>Servers MUST provide both an authenticated API-based directory <a href="#directory-list">list of Clients</a>, as well as <a href="#public-directory">publicly accessible web directory</a> interface of Clients who have been configured to be listed.</p>
-
-<p>The Directory APIs are authenticated using a Bearer <code class="language-plaintext highlighter-rouge">access_token</code> obtained by the Client using OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc6749#section-4.4"><code class="language-plaintext highlighter-rouge">client_credentials</code> grant</a> process, where the <code class="language-plaintext highlighter-rouge">client_id</code> used is for a Client that includes the <code class="language-plaintext highlighter-rouge">client_admin</code> scope.
-However, the <a href="#public-directory">Publicly Accessible Web Directory</a> not authenticated, as it is intended to be publicly accessible to browser users.</p>
-
-<h3 id="101-directory-entry-object-format-">10.1. Directory Entry Object Format <a id="directory-entry-format" href="#directory-entry-format" class="permalink">🔗</a></h3>
-
-<p>Directory Entry objects are formatted as JSON objects and contain the following named values:</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">client_id</code> - From the <a href="#client-format">Client object</a></li>
-  <li><code class="language-plaintext highlighter-rouge">client_name</code> - From the <a href="#client-format">Client object</a></li>
-  <li><code class="language-plaintext highlighter-rouge">client_uri</code> - From the <a href="#client-format">Client object</a></li>
-  <li><code class="language-plaintext highlighter-rouge">tos_uri</code> - From the <a href="#client-format">Client object</a></li>
-  <li><code class="language-plaintext highlighter-rouge">policy_uri</code> - From the <a href="#client-format">Client object</a></li>
-  <li><code class="language-plaintext highlighter-rouge">logo_uri</code> - From the <a href="#client-format">Client object</a></li>
-  <li><code class="language-plaintext highlighter-rouge">scope</code> - From the <a href="#client-format">Client object</a>, containing the list of scopes approved for production use, and NOT containing the <code class="language-plaintext highlighter-rouge">client_admin</code> scope.</li>
-  <li><code class="language-plaintext highlighter-rouge">profile_visibility</code> - From the <a href="#client-settings-format">Client Settings object</a></li>
-  <li><code class="language-plaintext highlighter-rouge">profile_uri</code> - From the <a href="#client-settings-format">Client Settings object</a></li>
-  <li><code class="language-plaintext highlighter-rouge">profile_description</code> - From the <a href="#client-settings-format">Client Settings object</a></li>
-  <li><code class="language-plaintext highlighter-rouge">profile_button_uri</code> - From the <a href="#client-settings-format">Client Settings object</a></li>
-  <li><code class="language-plaintext highlighter-rouge">profile_button_style</code> - From the <a href="#client-settings-format">Client Settings object</a></li>
-  <li><code class="language-plaintext highlighter-rouge">profile_contact_name</code> - From the <a href="#client-settings-format">Client Settings object</a></li>
-  <li><code class="language-plaintext highlighter-rouge">profile_contact_email</code> - From the <a href="#client-settings-format">Client Settings object</a></li>
-  <li><code class="language-plaintext highlighter-rouge">profile_contact_phone</code> - From the <a href="#client-settings-format">Client Settings object</a></li>
-  <li><code class="language-plaintext highlighter-rouge">profile_contact_website</code> - From the <a href="#client-settings-format">Client Settings object</a></li>
-</ul>
-
-<h3 id="102-listing-directory-entries-">10.2. Listing Directory Entries <a id="directory-list" href="#directory-list" class="permalink">🔗</a></h3>
-
-<p>Clients may request to list Directory Entry objects that they have access to by making an HTTPS <code class="language-plaintext highlighter-rouge">GET</code> request, authenticated with a valid Bearer <code class="language-plaintext highlighter-rouge">access_token</code> scoped to the <code class="language-plaintext highlighter-rouge">client_admin</code> scope, to the <code class="language-plaintext highlighter-rouge">cds_directory_api</code> URL included in the <a href="#registration-response">Client Registration Response</a> or <a href="#client-format">Client object</a>.
-The Client listing request responses are formatted as JSON objects and contain the following named values.</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">entries</code> - <em>Array[<a href="#directory-entry-format">DirectoryEntry</a>]</em> - (REQUIRED) A list of Directory Entry objects for Clients who have set their <code class="language-plaintext highlighter-rouge">profile_visibility</code> to <code class="language-plaintext highlighter-rouge">listed</code>.
-If no Clients are listed, this value is an empty list (<code class="language-plaintext highlighter-rouge">[]</code>).
-If more than 100 Directory Entry objects are available to be listed, Servers MAY truncate the list and use the <code class="language-plaintext highlighter-rouge">next</code> value to link to the next segment of the list of Directory Entry objects.</li>
-  <li><code class="language-plaintext highlighter-rouge">next</code> - <em><a href="#url">URL</a> or <code class="language-plaintext highlighter-rouge">null</code></em> - Where to request the next segment of the list of Directory Entry objects.
-If no next segment exists (i.e. the requester is at the end of the list), this value is <code class="language-plaintext highlighter-rouge">null</code>.</li>
-  <li><code class="language-plaintext highlighter-rouge">previous</code> - <em><a href="#url">URL</a> or <code class="language-plaintext highlighter-rouge">null</code></em> - Where to request the previous segment of the list of Directory Entry objects.
-If no previous segment exists (i.e. the requester is at the front of the list), this value is <code class="language-plaintext highlighter-rouge">null</code>.</li>
-</ul>
-
-<h3 id="103-publicly-accessible-web-directory-">10.3. Publicly Accessible Web Directory <a id="public-directory" href="#public-directory" class="permalink">🔗</a></h3>
-
-<p>Additionally, Servers MUST provide a publicly accessible directory web interface that allows users to browse and view the Client profile entries that are listed in the Directory API.
-Servers MUST NOT require authentication for users to browse the directory.
-Server MUST include searching capabilities in the web interface that allows users to search for Clients by name, description, and website.
-Servers MUST also include filtering capabilities in the web interface that allows users to filter the list of Clients by scope.
-Servers MUST also enable linking directly to a Client profile entry as defined by the <a href="#client-settings-format">Client Settings <code class="language-plaintext highlighter-rouge">profile_uri</code></a>.
-Servers MUST design the publicly accessible directory to be compatible for desktop, mobile, and accessibility-focused browsers and tools, such as vision impaired screen readers.
-Servers MAY include other features and functionality in addition to these requirements for the publicly accessible directory.</p>
-
-<p>For Client profile entries, Servers MUST render the Client profile entry with at least the following contents:</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">client_name</code> - From the <a href="#client-format">Client object</a>, as the name of the Client.</li>
-  <li><code class="language-plaintext highlighter-rouge">client_uri</code> - From the <a href="#client-format">Client object</a>, as a link to the Client’s website.</li>
-  <li><code class="language-plaintext highlighter-rouge">tos_uri</code> - From the <a href="#client-format">Client object</a>, as a link to the Client’s terms of service.</li>
-  <li><code class="language-plaintext highlighter-rouge">policy_uri</code> - From the <a href="#client-format">Client object</a>, as a link to the Client’s privacy policy.</li>
-  <li><code class="language-plaintext highlighter-rouge">logo_uri</code> - From the <a href="#client-format">Client object</a>, as an image and embedded in the rendered Client profile.
-Servers MAY fetch and cache logos set by Clients when they are configured as part of the <a href="#registration-request">Client Registration request</a> or when a Client modifies their registration on the <a href="#clients-modify">Clients API</a>.
-If a Client sets this value to <code class="language-plaintext highlighter-rouge">null</code>, then the Server MUST render the logo as a placeholder image, such as an image with the words “No Logo Provided”.</li>
-  <li><code class="language-plaintext highlighter-rouge">scope</code> - From the <a href="#client-format">Client object</a>, as a list of scopes for which the Client is approved for production use, except for the <code class="language-plaintext highlighter-rouge">client_admin</code> scope.</li>
-  <li><code class="language-plaintext highlighter-rouge">profile_description</code> - From the <a href="#client-settings-format">Client Settings object</a>, as a block of text as a description of the Client.
-Servers MUST NOT render URLs, phone numbers, emails, and other text that may be auto-detected as a link as links, and instead MUST render the description text as text.
-Servers MUST render line breaks in the profile entry as submitted by the Client.</li>
-  <li><code class="language-plaintext highlighter-rouge">profile_button_uri</code> - From the <a href="#client-settings-format">Client Settings object</a>, as an anchor link styled as the specified <code class="language-plaintext highlighter-rouge">profile_button_style</code> <a href="#button-styles">Button Styles</a> and when clicked opens a new tab via the <code class="language-plaintext highlighter-rouge">target="_blank"</code> and <code class="language-plaintext highlighter-rouge">rel="noopener noreferrer nofollow"</code> anchor attributes.
-If a Client sets this value to <code class="language-plaintext highlighter-rouge">null</code>, then the Server MUST NOT render this button link.</li>
-  <li><code class="language-plaintext highlighter-rouge">profile_contact_name</code> - From the <a href="#client-settings-format">Client Settings object</a>, as text of the Client’s contact name.</li>
-  <li><code class="language-plaintext highlighter-rouge">profile_contact_email</code> - From the <a href="#client-settings-format">Client Settings object</a>, as a <code class="language-plaintext highlighter-rouge">mailto:</code> link to the Client’s contact email.</li>
-  <li><code class="language-plaintext highlighter-rouge">profile_contact_phone</code> - From the <a href="#client-settings-format">Client Settings object</a>, as a <code class="language-plaintext highlighter-rouge">tel:</code> link to the Client’s contact phone number, where the link <code class="language-plaintext highlighter-rouge">href</code> is formatted as an <a href="https://en.wikipedia.org/wiki/E.123">E.123</a> international phone number and the link text is displayed as the Server’s locale format.
-If a Client sets this value to <code class="language-plaintext highlighter-rouge">null</code>, then the Server MUST NOT render this contact phone number link.</li>
-  <li><code class="language-plaintext highlighter-rouge">profile_contact_website</code> - From the <a href="#client-settings-format">Client Settings object</a>, as an anchor link when clicked opens a new tab via the <code class="language-plaintext highlighter-rouge">target="_blank"</code> and <code class="language-plaintext highlighter-rouge">rel="noopener noreferrer nofollow"</code> anchor attributes.
-If a Client sets this value to <code class="language-plaintext highlighter-rouge">null</code>, then the Server MUST NOT render this contact website link.</li>
-</ul>
-
-<p>Additionally, for Clients registered and approved for scopes that have <code class="language-plaintext highlighter-rouge">authorization_code</code> in the scope’s <code class="language-plaintext highlighter-rouge">grant_types</code> (thus allowing the Client to obtain user authorizations), Server MUST render a link on the Client profile entry for where users may go to view their current and previous authorization grants with the Client.</p>
-
 <h2 id="11-extensions-">11. Extensions <a id="extensions" href="#extensions" class="permalink">🔗</a></h2>
 
 <p><span style="background-color:yellow">TODO</span></p>
@@ -1260,7 +1068,7 @@ If a Client sets this value to <code class="language-plaintext highlighter-rouge
 Because the functionality described in this specification enables access to private Server functionality and data, Servers MUST follow industry cybersecurity best practices when securing their implementations of this specification to prevent unintended or inadvertent access to privileged functionality or data to Clients who are not authorized.
 These best practices include requiring HTTPS for API endpoints using the latest widely adopted encryption standards, undergoing regular security audits and penetration tests, and internally requiring security-focused process controls and data handling procedures.</p>
 
-<p><span style="background-color:yellow">TODO: Security considerations on public directory descriptions, buttons, etc.</span></p>
+<p><span style="background-color:yellow">TODO: Other security considerations</span></p>
 
 <h3 id="131-restricted-access-">13.1. Restricted Access <a id="restricted-access" href="#restricted-access" class="permalink">🔗</a></h3>
 
@@ -1273,13 +1081,13 @@ The functionality described in this specification is intended to be able to be i
 This specification does not describe specifically how Servers will authenticate Clients for by-default unauthenticated endpoints, as these restricted access protocols are context dependent.
 For example, if a Server providing a private Client Registration endpoint as part of an existing logged in portal, then they can use that logged in portal’s session cookie to authenticate Client requests to the registration endpoint.</p>
 
-<p>For authenticated endpoints (<a href="#clients-api">Clients API</a>, <a href="#client-settings-api">Client Settings API</a>, <a href="#client-messages-api">Client Messages API</a>, <a href="#scope-creds-api">Scope Credentials API</a>, <a href="#grants-api">Grants API</a>), Servers MUST authenticate requests using OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc6750#section-2.1">Authorization Request Header Field</a> with access tokens obtained using the OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc6749#section-5">Issuing an Access Token</a> process.</p>
+<p>For authenticated endpoints (<a href="#clients-api">Clients API</a>, <a href="#client-messages-api">Client Messages API</a>, <a href="#scope-creds-api">Scope Credentials API</a>, <a href="#grants-api">Grants API</a>), Servers MUST authenticate requests using OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc6750#section-2.1">Authorization Request Header Field</a> with access tokens obtained using the OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc6749#section-5">Issuing an Access Token</a> process.</p>
 
 <h3 id="132-rate-limiting-">13.2. Rate Limiting <a id="rate-limiting" href="#rate-limiting" class="permalink">🔗</a></h3>
 
 <p>For unauthenticated endpoints (<a href="#auth-server-metadata">Authorization Server Metadata</a>, <a href="#client-registration-process">Client Registration Process</a>), Servers SHOULD configure rate limiting restrictions so that bots and misconfigured scripts will not flood and overwhelm the endpoints with requests, while still allowing legitimate and low-volume automated requests have access to the endpoints.</p>
 
-<p>For authenticated endpoints (<a href="#clients-api">Clients API</a>, <a href="#client-settings-api">Client Settings API</a>, <a href="#client-messages-api">Client Messages API</a>, <a href="#scope-creds-api">Scope Credentials API</a>, <a href="#grants-api">Grants API</a>), Servers SHOULD configure rate limiting by Client and Scope Credential to ensure that individual Clients do not overwhelm Servers with authenticated API requests.
+<p>For authenticated endpoints (<a href="#clients-api">Clients API</a>, <a href="#client-messages-api">Client Messages API</a>, <a href="#scope-creds-api">Scope Credentials API</a>, <a href="#grants-api">Grants API</a>), Servers SHOULD configure rate limiting by Client and Scope Credential to ensure that individual Clients do not overwhelm Servers with authenticated API requests.
 Additionally, Servers SHOULD configure rate limiting for unauthenticated or failed authentication requests to authenticated API endpoints to prevent brute force attempts to gain access to authenticated APIs.</p>
 
 <h2 id="14-references-">14. References <a id="references" href="#references" class="permalink">🔗</a></h2>

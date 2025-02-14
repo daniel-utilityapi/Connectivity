@@ -405,9 +405,7 @@ Servers MAY set the URL to an online publicly-available copy of this specificati
 <h4 id="332-grant-admin-scope-">3.3.2 Grant Admin Scope <a id="scopes-grant-admin" href="#scopes-grant-admin" class="permalink">🔗</a></h4>
 
 <p>A scope for administratively gaining access to a specific Grant data and functionality.
-Since Servers MAY arbitrarily create Grant objects included in the <a href="#grants-api">Grants API</a>, this scope serves as an additional method of gaining access to previously created Grant scopes by Client administrators.
-Servers MUST only approve submissions of this scope to the token endpoint when the <code class="language-plaintext highlighter-rouge">grant_id</code> is for a Grant that has a non-empty <code class="language-plaintext highlighter-rouge">enabled_scope</code> value (i.e. the Grant is not disabled) and neither <code class="language-plaintext highlighter-rouge">client_admin</code> or <code class="language-plaintext highlighter-rouge">grant_admin</code> are part of the <code class="language-plaintext highlighter-rouge">scope</code>.
-When multiple authorization details entries are submitted to the token endpoint, the <code class="language-plaintext highlighter-rouge">grant_id</code> values MUST all have the same <code class="language-plaintext highlighter-rouge">client_id</code>.</p>
+Since Servers MAY arbitrarily create Grant objects included in the <a href="#grants-api">Grants API</a>, this scope serves as an additional method of gaining access to previously created Grant scopes by Client administrators.</p>
 
 <p>The following are how the <a href="#scope-descriptions-format">Scope Descriptions</a> fields MUST be configured for this scope:</p>
 
@@ -424,23 +422,46 @@ Servers MAY set the URL to an online publicly-available copy of this specificati
   <li><code class="language-plaintext highlighter-rouge">token_endpoint_auth_methods_supported</code> is <code class="language-plaintext highlighter-rouge">["client_secret_basic"]</code>.</li>
   <li><code class="language-plaintext highlighter-rouge">code_challenge_methods_supported</code> is <code class="language-plaintext highlighter-rouge">[]</code>.</li>
   <li><code class="language-plaintext highlighter-rouge">coverages_supported</code> is <code class="language-plaintext highlighter-rouge">[]</code>.</li>
-  <li><code class="language-plaintext highlighter-rouge">authorization_details_fields_supported</code> is a JSON array with a single entry <a href="#auth-details-fields-format">Authorization Details Field Object</a> with the following fields.
+  <li><code class="language-plaintext highlighter-rouge">authorization_details_fields_supported</code> is a JSON array with the following two entries of <a href="#auth-details-fields-format">Authorization Details Field Objects</a>.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">id</code> is <code class="language-plaintext highlighter-rouge">grant_id</code>.</li>
-      <li><code class="language-plaintext highlighter-rouge">name</code> is <code class="language-plaintext highlighter-rouge">"Grant identifier"</code>.</li>
-      <li><code class="language-plaintext highlighter-rouge">description</code> is <code class="language-plaintext highlighter-rouge">"A previous active Grant identifier for which the returned access_token will be given access. Multiple authorization details entries may be submitted with different grant_id values for the same client_id to gain access to multiple Grants."</code>.</li>
-      <li><code class="language-plaintext highlighter-rouge">documentation</code> is a <em><a href="#url">URL</a></em> for the Server’s documentation on the <code class="language-plaintext highlighter-rouge">grant_id</code> authorization details field.
+      <li>Client ID:
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">id</code> is <code class="language-plaintext highlighter-rouge">client_id</code>.</li>
+          <li><code class="language-plaintext highlighter-rouge">name</code> is <code class="language-plaintext highlighter-rouge">"Client object identifier"</code>.</li>
+          <li><code class="language-plaintext highlighter-rouge">description</code> is <code class="language-plaintext highlighter-rouge">"The Client object identifier for which the Grant is issued."</code>.</li>
+          <li><code class="language-plaintext highlighter-rouge">documentation</code> is a <em><a href="#url">URL</a></em> for the Server’s documentation on the <code class="language-plaintext highlighter-rouge">client_id</code> authorization details field.
 Servers MAY set the URL to an online publicly-available copy of this specification as adequate documentation for this authorization details field.</li>
-      <li><code class="language-plaintext highlighter-rouge">format</code> is <code class="language-plaintext highlighter-rouge">string</code>.</li>
-      <li><code class="language-plaintext highlighter-rouge">is_required</code> is <code class="language-plaintext highlighter-rouge">true</code>.</li>
-      <li><code class="language-plaintext highlighter-rouge">default</code> is not included.</li>
-      <li><code class="language-plaintext highlighter-rouge">relative_date_limit</code> is not included.</li>
-      <li><code class="language-plaintext highlighter-rouge">absolute_date_limit</code> is not included.</li>
-      <li><code class="language-plaintext highlighter-rouge">limit</code> is not included.</li>
-      <li><code class="language-plaintext highlighter-rouge">choices</code> is not included.</li>
+          <li><code class="language-plaintext highlighter-rouge">format</code> is <code class="language-plaintext highlighter-rouge">string</code>.</li>
+          <li><code class="language-plaintext highlighter-rouge">is_required</code> is <code class="language-plaintext highlighter-rouge">true</code>.</li>
+          <li><code class="language-plaintext highlighter-rouge">default</code> is not included.</li>
+          <li><code class="language-plaintext highlighter-rouge">relative_date_limit</code> is not included.</li>
+          <li><code class="language-plaintext highlighter-rouge">absolute_date_limit</code> is not included.</li>
+          <li><code class="language-plaintext highlighter-rouge">limit</code> is not included.</li>
+          <li><code class="language-plaintext highlighter-rouge">choices</code> is not included.</li>
+        </ul>
+      </li>
+      <li>Grant ID:
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">id</code> is <code class="language-plaintext highlighter-rouge">grant_id</code>.</li>
+          <li><code class="language-plaintext highlighter-rouge">name</code> is <code class="language-plaintext highlighter-rouge">"Grant identifier"</code>.</li>
+          <li><code class="language-plaintext highlighter-rouge">description</code> is <code class="language-plaintext highlighter-rouge">"The Grant identifier for which the returned access_token will be given access."</code>.</li>
+          <li><code class="language-plaintext highlighter-rouge">documentation</code> is a <em><a href="#url">URL</a></em> for the Server’s documentation on the <code class="language-plaintext highlighter-rouge">grant_id</code> authorization details field.
+Servers MAY set the URL to an online publicly-available copy of this specification as adequate documentation for this authorization details field.</li>
+          <li><code class="language-plaintext highlighter-rouge">format</code> is <code class="language-plaintext highlighter-rouge">string</code>.</li>
+          <li><code class="language-plaintext highlighter-rouge">is_required</code> is <code class="language-plaintext highlighter-rouge">true</code>.</li>
+          <li><code class="language-plaintext highlighter-rouge">default</code> is not included.</li>
+          <li><code class="language-plaintext highlighter-rouge">relative_date_limit</code> is not included.</li>
+          <li><code class="language-plaintext highlighter-rouge">absolute_date_limit</code> is not included.</li>
+          <li><code class="language-plaintext highlighter-rouge">limit</code> is not included.</li>
+          <li><code class="language-plaintext highlighter-rouge">choices</code> is not included.</li>
+        </ul>
+      </li>
     </ul>
   </li>
 </ul>
+
+<p>Server MUST only approve submissions of this scope to the token endpoint with a single authorization details entry to the token endpoint, ensuring the access token returned is only valid for one <code class="language-plaintext highlighter-rouge">grant_id</code>.
+Servers MUST only approve submissions of this scope to the token endpoint when the <code class="language-plaintext highlighter-rouge">grant_id</code> is for a Grant that has a matching <code class="language-plaintext highlighter-rouge">client_id</code>, has a non-empty <code class="language-plaintext highlighter-rouge">enabled_scope</code> value (i.e. the Grant is not disabled) and neither <code class="language-plaintext highlighter-rouge">client_admin</code> or <code class="language-plaintext highlighter-rouge">grant_admin</code> are part of the <code class="language-plaintext highlighter-rouge">scope</code>.</p>
 
 <h4 id="333-server-provided-files-scope-">3.3.3 Server-Provided Files Scope <a id="scopes-server-provided-files" href="#scopes-server-provided-files" class="permalink">🔗</a></h4>
 
@@ -480,7 +501,7 @@ Servers MAY set the URL to an online publicly-available copy of this specificati
   </li>
 </ul>
 
-<p>Since Grants with the scope are only created by Servers, Client do not receive an authorization code or access token for that Grant with which they may access the files. Instead, to access the files, Clients MUST submit a <code class="language-plaintext highlighter-rouge">client_credentials</code> grant with the scope of <code class="language-plaintext highlighter-rouge">grant_admin</code> and an <code class="language-plaintext highlighter-rouge">authorization_details</code> containing the <code class="language-plaintext highlighter-rouge">grant_id</code> for the Grant the Client found via the <a href="#grants-api">Grants API</a>.</p>
+<p>Since Grants with the scope are only created by Servers, Client do not receive an authorization code or access token for that Grant with which they may access the files. Instead, to access the files, Clients MUST submit a <code class="language-plaintext highlighter-rouge">client_credentials</code> grant with the scope of <code class="language-plaintext highlighter-rouge">grant_admin</code> and an <code class="language-plaintext highlighter-rouge">authorization_details</code> containing the <code class="language-plaintext highlighter-rouge">client_id</code> and <code class="language-plaintext highlighter-rouge">grant_id</code> for the Grant the Client found via the <a href="#grants-api">Grants API</a>.</p>
 
 <h3 id="34-scope-descriptions-object-format-">3.4. Scope Descriptions Object Format <a id="scope-descriptions-format" href="#scope-descriptions-format" class="permalink">🔗</a></h3>
 

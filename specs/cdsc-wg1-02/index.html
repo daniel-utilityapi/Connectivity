@@ -349,6 +349,14 @@ This array of values MUST be the same as <code class="language-plaintext highlig
 <ul>
   <li><code class="language-plaintext highlighter-rouge">cds_oauth_version</code> - <em><a href="#string">string</a></em> - (REQUIRED) The version of the CDS-WG1-02 Client Registration specification that the Server has implemented, which for this version of the specification is <code class="language-plaintext highlighter-rouge">v1</code></li>
   <li><code class="language-plaintext highlighter-rouge">cds_human_registration</code> - <em><a href="#url">URL</a></em> - (REQUIRED) Where Clients who do not have the technical capacity to use the <code class="language-plaintext highlighter-rouge">registration_endpoint</code> can visit to manually register a Client using a user device</li>
+  <li><code class="language-plaintext highlighter-rouge">cds_clients_api</code> - <em><a href="#url">URL</a></em> - (REQUIRED) The URL for the <a href="#clients-api">Clients API</a>.</li>
+  <li><code class="language-plaintext highlighter-rouge">cds_messages_api</code> - <em><a href="#url">URL</a></em> - (REQUIRED) The URL for the <a href="#messages-api">Messages API</a>.</li>
+  <li><code class="language-plaintext highlighter-rouge">cds_credentials_api</code> - <em><a href="#url">URL</a></em> - (REQUIRED) The URL for the <a href="#credentials-api">Credentials API</a>.</li>
+  <li><code class="language-plaintext highlighter-rouge">cds_grants_api</code> - <em><a href="#url">URL</a></em> - (REQUIRED) The URL for the <a href="#grants-api">Grants API</a>.</li>
+  <li><code class="language-plaintext highlighter-rouge">cds_server_provided_files_api</code> - <em><a href="#url">URL</a></em> - (OPTIONAL) The URL for the <a href="#server-provided-files-api">Server-Provided Files API</a>.
+This MUST be included if <code class="language-plaintext highlighter-rouge">scopes_supported</code> includes the <code class="language-plaintext highlighter-rouge">server_provided_files</code> scope.</li>
+  <li><code class="language-plaintext highlighter-rouge">cds_test_accounts</code> - <em><a href="#url">URL</a></em> - (OPTIONAL) Where Clients can find developer documentation on what test account credentials may be used for testing functionality.
+This MUST be included if <code class="language-plaintext highlighter-rouge">response_types_supported</code> is not an empty list (i.e. user authorization is supported for some scopes).</li>
   <li><code class="language-plaintext highlighter-rouge">cds_scope_descriptions</code> - <em>Map[<a href="#scope-descriptions-format">ScopeDescription</a>]</em> - (REQUIRED) An object providing additional information about what Scope values listed in <code class="language-plaintext highlighter-rouge">scopes_supported</code> mean.
 This object MUST include a key for each Scope listed in <code class="language-plaintext highlighter-rouge">scopes_supported</code> with a <a href="#scope-descriptions-format">Scope Description</a> as that key’s value.</li>
   <li><code class="language-plaintext highlighter-rouge">cds_registration_fields</code> - <em>Map[<a href="#registration-field-format">RegistrationField</a>]</em> - (REQUIRED) An object providing additional information about Registration Field that are referenced in <a href="#scope-descriptions-format">Scope Description’s</a> <code class="language-plaintext highlighter-rouge">registration_requirements</code> list.
@@ -703,7 +711,8 @@ Clients MAY choose to update the <code class="language-plaintext highlighter-rou
 For situations where Servers do not initially create a Client with <code class="language-plaintext highlighter-rouge">production</code> as a <code class="language-plaintext highlighter-rouge">cds_status_option</code>, such as when the Server has a manual review step, Servers MUST create a Client object with <code class="language-plaintext highlighter-rouge">sandbox</code> as a <code class="language-plaintext highlighter-rouge">cds_status_option</code> so that Clients MAY being to test their applications immediately after registration.
 Then, later if and when the Server decides to allow the Client access to the production environment, the Server MUST create a new Client object with <code class="language-plaintext highlighter-rouge">production</code> as a <code class="language-plaintext highlighter-rouge">cds_status_option</code>.</p>
 
-<p>While Servers MAY support OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc7592">Dynamic Client Registration Management Protocol</a> by including the <code class="language-plaintext highlighter-rouge">registration_client_uri</code> and <code class="language-plaintext highlighter-rouge">registration_access_token</code> values in their registration response, this specification requires that Servers MUST support the <a href="clients-api">Clients API</a> by including the <code class="language-plaintext highlighter-rouge">cds_clients_api</code> value in the registration response as a way for Clients to manage their registrations. The Clients API is needed beyond the OAuth Dynamic Client Registration Management Protocol because as part of registration, Servers create multiple Clients that group the various registered scopes, and OAuth’s Dynamic Client Registration Management Protocol does not support APIs for listing multiple clients or credentials that are created from a single registration request.</p>
+<p>While Servers MAY support OAuth’s <a href="https://www.rfc-editor.org/rfc/rfc7592">Dynamic Client Registration Management Protocol</a> by including the <code class="language-plaintext highlighter-rouge">registration_client_uri</code> and <code class="language-plaintext highlighter-rouge">registration_access_token</code> values in their registration response, this specification requires that Servers MUST support the <a href="clients-api">Clients API</a> by including the <code class="language-plaintext highlighter-rouge">cds_clients_api</code> value in the <a href="#auth-server-metadata-format">Authorization Server Metadata</a> as a way for Clients to manage their registrations.
+The Clients API is needed beyond the OAuth Dynamic Client Registration Management Protocol because as part of registration, Servers create multiple Clients that group the various registered scopes, and OAuth’s Dynamic Client Registration Management Protocol does not support APIs for listing multiple clients or credentials that are created from a single registration request.</p>
 
 <h2 id="5-clients-api-">5. Clients API <a id="clients-api" href="#clients-api" class="permalink">🔗</a></h2>
 
@@ -764,18 +773,6 @@ If the Client’s registered scopes have different <a href="#scope-descriptions-
 If the Client’s CDSC server metadata is no different from the public CDSC server metadata, Servers MAY simply link to the public URL.
 If this metadata endpoint requires authentication, Servers MUST authenticate Client requests to this endpoint via Bearer access token obtained using OAuth’s <code class="language-plaintext highlighter-rouge">client_credentials</code> grant with a scope of <code class="language-plaintext highlighter-rouge">client_admin</code>, and reject unauthenticated requests with a <code class="language-plaintext highlighter-rouge">401 Unauthorized</code> response code.
 Clients know that they must use a Bearer token when Servers return a <code class="language-plaintext highlighter-rouge">401</code> response code for this endpoint when the Client makes an unauthenticated request to the endpoint.</li>
-  <li><code class="language-plaintext highlighter-rouge">cds_test_accounts</code> - <em><a href="#url">URL</a></em> - (OPTIONAL) Where Clients can find developer documentation on what test account credentials may be used for testing functionality.
-This MUST be included if the Client object <code class="language-plaintext highlighter-rouge">cds_status_options</code> contains <code class="language-plaintext highlighter-rouge">sandbox</code>.</li>
-  <li><code class="language-plaintext highlighter-rouge">cds_clients_api</code> - <em><a href="#url">URL</a></em> - (OPTIONAL) The URL for the <a href="#clients-api">Clients API</a>.
-This MUST be included if the Client object <code class="language-plaintext highlighter-rouge">scope</code> contains <code class="language-plaintext highlighter-rouge">client_admin</code>.</li>
-  <li><code class="language-plaintext highlighter-rouge">cds_messages_api</code> - <em><a href="#url">URL</a></em> - (OPTIONAL) The URL for the <a href="#messages-api">Messages API</a>.
-This MUST be included if the Client object <code class="language-plaintext highlighter-rouge">scope</code> contains <code class="language-plaintext highlighter-rouge">client_admin</code>.</li>
-  <li><code class="language-plaintext highlighter-rouge">cds_credentials_api</code> - <em><a href="#url">URL</a></em> - (OPTIONAL) The URL for the <a href="#credentials-api">Credentials API</a>.
-This MUST be included if the Client object <code class="language-plaintext highlighter-rouge">scope</code> contains <code class="language-plaintext highlighter-rouge">client_admin</code>.</li>
-  <li><code class="language-plaintext highlighter-rouge">cds_grants_api</code> - <em><a href="#url">URL</a></em> - (OPTIONAL) The URL for the <a href="#grants-api">Grants API</a>.
-This MUST be included if the Client object <code class="language-plaintext highlighter-rouge">scope</code> contains <code class="language-plaintext highlighter-rouge">client_admin</code>.</li>
-  <li><code class="language-plaintext highlighter-rouge">cds_server_provided_files_api</code> - <em><a href="#url">URL</a></em> - (OPTIONAL) The URL for the <a href="#server-provided-files-api">Server-Provided Files API</a>.
-This MUST be included if the Client’s registration response <code class="language-plaintext highlighter-rouge">scope</code> string included the <code class="language-plaintext highlighter-rouge">server_provided_files</code> scope.</li>
   <li><code class="language-plaintext highlighter-rouge">cds_default_scope</code> - <em><a href="#string">string</a></em> - (OPTIONAL) The default scope string used when no <code class="language-plaintext highlighter-rouge">scope</code> parameter is provided as part of an authorization request.
 This MUST be included if <code class="language-plaintext highlighter-rouge">response_types</code> is not an empty list (i.e. authorization requests are enabled).
 For the initial registration response, Servers MAY choose to configure the default scope string the same as the <code class="language-plaintext highlighter-rouge">scope</code> field or another subset of default scopes.</li>
@@ -801,7 +798,7 @@ For scopes that require user authorization (i.e. <code class="language-plaintext
 
 <h3 id="53-listing-clients-">5.3. Listing Clients <a id="clients-list" href="#clients-list" class="permalink">🔗</a></h3>
 
-<p>Clients may request to list Client objects that they have access to by making an HTTPS <code class="language-plaintext highlighter-rouge">GET</code> request, authenticated with a valid Bearer <code class="language-plaintext highlighter-rouge">access_token</code> scoped to the <code class="language-plaintext highlighter-rouge">client_admin</code> scope, to the <code class="language-plaintext highlighter-rouge">cds_clients_api</code> URL included in the <a href="#registration-response">Client Registration Response</a>.
+<p>Clients may request to list Client objects that they have access to by making an HTTPS <code class="language-plaintext highlighter-rouge">GET</code> request, authenticated with a valid Bearer <code class="language-plaintext highlighter-rouge">access_token</code> scoped to the <code class="language-plaintext highlighter-rouge">client_admin</code> scope, to the <code class="language-plaintext highlighter-rouge">cds_clients_api</code> URL included in the <a href="#auth-server-metadata-format">Authorization Server Metadata</a>.
 The Client listing request responses are formatted as JSON objects and contain the following named values.</p>
 
 <ul>
@@ -839,7 +836,6 @@ If a Server has optionally implemented OAuth’s <a href="https://www.rfc-editor
   <li><code class="language-plaintext highlighter-rouge">client_uri</code></li>
   <li><code class="language-plaintext highlighter-rouge">logo_uri</code></li>
   <li><code class="language-plaintext highlighter-rouge">scope</code></li>
-  <li><code class="language-plaintext highlighter-rouge">scope</code></li>
   <li><code class="language-plaintext highlighter-rouge">contacts</code></li>
   <li><code class="language-plaintext highlighter-rouge">tos_uri</code></li>
   <li><code class="language-plaintext highlighter-rouge">policy_uri</code></li>
@@ -865,11 +861,6 @@ Clients MUST use the <a href="#credentials-api">Credentials API</a> to discover 
   <li><code class="language-plaintext highlighter-rouge">cds_modified</code> - This is a URL set by the Server.</li>
   <li><code class="language-plaintext highlighter-rouge">cds_client_uri</code> - This is a URL set by the Server.</li>
   <li><code class="language-plaintext highlighter-rouge">cds_server_metadata</code> - This is a URL set by the Server.</li>
-  <li><code class="language-plaintext highlighter-rouge">cds_clients_api</code> - This is a URL set by the Server.</li>
-  <li><code class="language-plaintext highlighter-rouge">cds_messages_api</code> - This is a URL set by the Server.</li>
-  <li><code class="language-plaintext highlighter-rouge">cds_credentials_api</code> - This is a URL set by the Server.</li>
-  <li><code class="language-plaintext highlighter-rouge">cds_grants_api</code> - This is a URL set by the Server.</li>
-  <li><code class="language-plaintext highlighter-rouge">cds_server_provided_files_api</code> - This is a URL set by the Server.</li>
   <li><code class="language-plaintext highlighter-rouge">cds_status_options</code> - This is a list set by the Server.</li>
 </ul>
 
@@ -968,7 +959,8 @@ For Messages with <code class="language-plaintext highlighter-rouge">type</code>
 
 <h3 id="65-listing-messages-">6.5. Listing Messages <a id="messages-list" href="#messages-list" class="permalink">🔗</a></h3>
 
-<p>Clients may request to list Message objects that they have access to by making an HTTPS <code class="language-plaintext highlighter-rouge">GET</code> request, authenticated with a valid Bearer <code class="language-plaintext highlighter-rouge">access_token</code> scoped to the <code class="language-plaintext highlighter-rouge">client_admin</code> scope, to the <code class="language-plaintext highlighter-rouge">cds_messages_api</code> URL included in the <a href="#registration-response">Client Registration Response</a> or <a href="#client-format">Clients API</a>. The Message listing request responses are formatted as JSON objects and contain the following named values.</p>
+<p>Clients may request to list Message objects that they have access to by making an HTTPS <code class="language-plaintext highlighter-rouge">GET</code> request, authenticated with a valid Bearer <code class="language-plaintext highlighter-rouge">access_token</code> scoped to the <code class="language-plaintext highlighter-rouge">client_admin</code> scope, to the <code class="language-plaintext highlighter-rouge">cds_messages_api</code> URL included in the <a href="#auth-server-metadata-format">Authorization Server Metadata</a>.
+The Message listing request responses are formatted as JSON objects and contain the following named values.</p>
 
 <ul>
   <li><code class="language-plaintext highlighter-rouge">outstanding</code> - <em>Array[<a href="#message-format">ClientMessage</a>]</em> - (REQUIRED) A list of Messages where the <code class="language-plaintext highlighter-rouge">status</code> is <code class="language-plaintext highlighter-rouge">open</code> or <code class="language-plaintext highlighter-rouge">pending</code>.</li>
@@ -1085,7 +1077,7 @@ This field MUST be included if the <code class="language-plaintext highlighter-r
 
 <h3 id="73-listing-credentials-">7.3. Listing Credentials <a id="credentials-list" href="#credentials-list" class="permalink">🔗</a></h3>
 
-<p>Clients may request to list Credential objects that they have access to by making an HTTPS <code class="language-plaintext highlighter-rouge">GET</code> request, authenticated with a valid Bearer <code class="language-plaintext highlighter-rouge">access_token</code> scoped to the <code class="language-plaintext highlighter-rouge">client_admin</code> scope, to the <code class="language-plaintext highlighter-rouge">cds_credentials_api</code> URL included in the <a href="#registration-response">Client Registration Response</a> or <a href="#client-format">Clients API</a>.
+<p>Clients may request to list Credential objects that they have access to by making an HTTPS <code class="language-plaintext highlighter-rouge">GET</code> request, authenticated with a valid Bearer <code class="language-plaintext highlighter-rouge">access_token</code> scoped to the <code class="language-plaintext highlighter-rouge">client_admin</code> scope, to the <code class="language-plaintext highlighter-rouge">cds_credentials_api</code> URL included in the <a href="#auth-server-metadata-format">Authorization Server Metadata</a>.
 The Credential listing request responses are formatted as JSON objects and contain the following named values.</p>
 
 <ul>
@@ -1230,7 +1222,7 @@ Access to existing data is still available, but the Client should not expect upd
 
 <h3 id="83-listing-grants-">8.3. Listing Grants <a id="grants-list" href="#grants-list" class="permalink">🔗</a></h3>
 
-<p>Clients may request to list Grant objects that they have access to by making an HTTPS <code class="language-plaintext highlighter-rouge">GET</code> request, authenticated with a valid Bearer <code class="language-plaintext highlighter-rouge">access_token</code> scoped to the <code class="language-plaintext highlighter-rouge">client_admin</code> scope, to the <code class="language-plaintext highlighter-rouge">cds_grants_api</code> URL included in the <a href="#registration-response">Client Registration Response</a> or <a href="#client-format">Clients API</a>.
+<p>Clients may request to list Grant objects that they have access to by making an HTTPS <code class="language-plaintext highlighter-rouge">GET</code> request, authenticated with a valid Bearer <code class="language-plaintext highlighter-rouge">access_token</code> scoped to the <code class="language-plaintext highlighter-rouge">client_admin</code> scope, to the <code class="language-plaintext highlighter-rouge">cds_grants_api</code> URL included in the <a href="#auth-server-metadata-format">Authorization Server Metadata</a>.
 The Grant listing request responses are formatted as JSON objects and contain the following named values.</p>
 
 <ul>
@@ -1313,7 +1305,7 @@ Servers MUST authenticate this download endpoint using the same authentication r
 
 <h3 id="92-listing-server-provided-files-">9.2. Listing Server-Provided Files <a id="server-provided-files-list" href="#server-provided-files-list" class="permalink">🔗</a></h3>
 
-<p>Clients may request to list Server-Provided File objects that they have access to by making an HTTPS <code class="language-plaintext highlighter-rouge">GET</code> request, authenticated with a valid Bearer <code class="language-plaintext highlighter-rouge">access_token</code> scoped to the <code class="language-plaintext highlighter-rouge">client_admin</code> scope, to the <code class="language-plaintext highlighter-rouge">cds_server_provided_files_api</code> URL included in the <a href="#registration-response">Client Registration Response</a> or <a href="#client-format">Clients API</a>.
+<p>Clients may request to list Server-Provided File objects that they have access to by making an HTTPS <code class="language-plaintext highlighter-rouge">GET</code> request, authenticated with a valid Bearer <code class="language-plaintext highlighter-rouge">access_token</code> scoped to the <code class="language-plaintext highlighter-rouge">client_admin</code> scope, to the <code class="language-plaintext highlighter-rouge">cds_server_provided_files_api</code> URL included in the <a href="#auth-server-metadata-format">Authorization Server Metadata</a>.
 The Server-Provided File listing request responses are formatted as JSON objects and contain the following named values.</p>
 
 <ul>

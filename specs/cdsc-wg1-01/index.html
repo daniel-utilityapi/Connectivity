@@ -226,6 +226,8 @@ These entities can include, but are not limited to, carbon tracking applications
 
 <p><a id="mime-type" href="#mime-type" class="permalink">🔗</a> “MIME type” - A string representing a document media type as defined in <a href="https://datatracker.ietf.org/doc/html/rfc6838">RFC 6838</a> (e.g. “image/png”).</p>
 
+<p><a id="country-code" href="#country-code" class="permalink">🔗</a> “country code” - A two-character string representing a country as defined in <a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166</a> (e.g. “US”).</p>
+
 <p><a id="key-words" href="#key-words" class="permalink">🔗</a> Key Words: “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “NOT RECOMMENDED”, “MAY”, and “OPTIONAL” are defined in accordance with <a href="https://www.rfc-editor.org/info/bcp14">BCP 14</a>.</p>
 
 <h2 id="3-metadata-endpoint-">3. Metadata Endpoint <a id="metadata-endpoint" href="#metadata-endpoint" class="permalink">🔗</a></h2>
@@ -325,8 +327,13 @@ The following values are included in the default list available in coverage entr
   <li><code class="language-plaintext highlighter-rouge">id</code> - <em><a href="#string">string</a></em> - (REQUIRED) A unique identifier for the coverage entry.</li>
   <li><code class="language-plaintext highlighter-rouge">created</code> - <em><a href="#datetime">datetime</a></em> - (REQUIRED) When this coverage entry was first made available.</li>
   <li><code class="language-plaintext highlighter-rouge">updated</code> - <em><a href="#datetime">datetime</a></em> - (REQUIRED) When this coverage entry was last modified.</li>
-  <li><code class="language-plaintext highlighter-rouge">entity_name</code> - <em><a href="#string">string</a></em> - (REQUIRED) A human readable name for the entity being covered (e.g. “Demo Gas &amp; Electric”). The entity name in a coverage entry MAY be different than the Server metadata <code class="language-plaintext highlighter-rouge">name</code> value in situations where the Server is operated by a parent or other entity.</li>
-  <li><code class="language-plaintext highlighter-rouge">entity_abbreviation</code> - <em><code class="language-plaintext highlighter-rouge">null</code> or <a href="#string">string</a></em> - (REQUIRED) The abbreviation for the entity being covered by the coverage entry (e.g. “DG&amp;E”). This field is to assist Clients in parsing coverage for entities that are commonly known by their abbreviated names (e.g. “DG&amp;E” rather than “Demo Gas &amp; Electric”). If no abbreviation is available for the entity being covered, this value is <code class="language-plaintext highlighter-rouge">null</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">entity_name</code> - <em><a href="#string">string</a></em> - (REQUIRED) A human readable name for the entity being covered (e.g. “Demo Gas &amp; Electric”).
+The entity name in a coverage entry MAY be different than the Server metadata <code class="language-plaintext highlighter-rouge">name</code> value in situations where the Server is operated by a parent or other entity.</li>
+  <li><code class="language-plaintext highlighter-rouge">entity_abbreviation</code> - <em><code class="language-plaintext highlighter-rouge">null</code> or <a href="#string">string</a></em> - (REQUIRED) The abbreviation for the entity being covered by the coverage entry (e.g. “DG&amp;E”).
+This field is to assist Clients in parsing coverage for entities that are commonly known by their abbreviated names (e.g. “DG&amp;E” rather than “Demo Gas &amp; Electric”).
+If no abbreviation is available for the entity being covered, this value is <code class="language-plaintext highlighter-rouge">null</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">country</code> - <em><a href="#country-code">country code</a></em> - (REQUIRED) The country that has jurisdiction over the Coverage Entity.
+If multiple countries have jurisdiction over a piece of coverage, Servers MUST have multiple Coverage Entries, one for each country having jurisdiction.</li>
   <li><code class="language-plaintext highlighter-rouge">name</code> - <em><a href="#string">string</a></em> - (REQUIRED) A human readable name for the coverage area or category (e.g. “Upstate New York electric territory”).</li>
   <li><code class="language-plaintext highlighter-rouge">description</code> - <em><a href="#string">string</a></em> - (OPTIONAL) A brief description the coverage area or category (e.g. “Example Electric’s coverage for the northern half of New York state”).</li>
   <li><code class="language-plaintext highlighter-rouge">type</code> - <em><a href="#coverage-entry-types">CoverageType</a></em> - (REQUIRED) The type of coverage entry.</li>
@@ -361,8 +368,10 @@ Many utilities have different geographic or logical coverage for their different
 The following list of strings are an enumerated set of role types that MAY be set as the <code class="language-plaintext highlighter-rouge">role</code> value in the coverage entry object.</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">authoritative</code> - The Server represents the authoritative entity for the capabilities covered by the coverage entry (e.g. the utility itselfis providing the capability). Only one Server SHOULD mark itself as <code class="language-plaintext highlighter-rouge">authoritative</code> for the same coverage and capability, to prevent any abiguity for Clients as to a “source of truth”.</li>
-  <li><code class="language-plaintext highlighter-rouge">official</code> - The Server represents a contractually obligated or government mandated entity that has an official connection to the <code class="language-plaintext highlighter-rouge">authoritative</code> entity and is offering funcational capabilities for the <code class="language-plaintext highlighter-rouge">direct</code> entity in an official capacity (e.g. a state-wide data hub offering customer data access). Multiple Servers could mark themselves as <code class="language-plaintext highlighter-rouge">official</code> for the same coverage and capability if the <code class="language-plaintext highlighter-rouge">authoritative</code> entity has multiple implementations of capabilities with officially designated service providers or data hubs.</li>
+  <li><code class="language-plaintext highlighter-rouge">authoritative</code> - The Server represents the authoritative entity for the capabilities covered by the coverage entry (e.g. the utility itselfis providing the capability).
+Only one Server SHOULD mark itself as <code class="language-plaintext highlighter-rouge">authoritative</code> for the same coverage and capability, to prevent any abiguity for Clients as to a “source of truth”.</li>
+  <li><code class="language-plaintext highlighter-rouge">official</code> - The Server represents a contractually obligated or government mandated entity that has an official connection to the <code class="language-plaintext highlighter-rouge">authoritative</code> entity and is offering funcational capabilities for the <code class="language-plaintext highlighter-rouge">direct</code> entity in an official capacity (e.g. a state-wide data hub offering customer data access).
+Multiple Servers could mark themselves as <code class="language-plaintext highlighter-rouge">official</code> for the same coverage and capability if the <code class="language-plaintext highlighter-rouge">authoritative</code> entity has multiple implementations of capabilities with officially designated service providers or data hubs.</li>
   <li><code class="language-plaintext highlighter-rouge">aggregator</code> - The Server represents an external entity that offers capabilities by proxy and does not have an official agreement with the <code class="language-plaintext highlighter-rouge">direct</code> entity (e.g. a service provider that aggregates many utility territory capabilities).</li>
 </ul>
 
@@ -516,7 +525,10 @@ For example, if a Server is providing the metadata endpoint as part of an existi
 
 <p><a href="#metadata-well-known-uri">Well-known metadata endpoints</a> MUST NOT require Client authentication to access, since these metadata endpoints are intended to be published publicly.</p>
 
-<p>Resources provided as URLs in metadata and coverage objects MUST be accessible under at least the same level of authentication requirements as accessing the metadata or coverage objects themselves. For example, if a coverage entry object requires cookie-based authentication to access, then and linked the GeoJSON object must also be accessible using the same cookie-based authentication. Servers MAY also choose to also make those resources available publicly, where any included authentication in the request is ignored. If the metadata or coverage object is made available publicly, then the linked resource must also be accessible publicly.</p>
+<p>Resources provided as URLs in metadata and coverage objects MUST be accessible under at least the same level of authentication requirements as accessing the metadata or coverage objects themselves.
+For example, if a coverage entry object requires cookie-based authentication to access, then and linked the GeoJSON object must also be accessible using the same cookie-based authentication.
+Servers MAY also choose to also make those resources available publicly, where any included authentication in the request is ignored.
+If the metadata or coverage object is made available publicly, then the linked resource must also be accessible publicly.</p>
 
 <h3 id="82-rate-limiting-">8.2. Rate Limiting <a id="rate-limiting" href="#rate-limiting" class="permalink">🔗</a></h3>
 
